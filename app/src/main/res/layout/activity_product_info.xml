@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_theme"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/view_head"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/head_top" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/lly_head"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/lly_left"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/id_leftBtnImg"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@mipmap/theme_back_icon" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="详情"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp" />
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/lly_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:minWidth="45dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_right"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_right"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="8dp"
+                        android:gravity="center_vertical|right"
+                        android:singleLine="true"
+                        android:textColor="@color/color333333"
+                        android:textSize="14dp"
+                        android:visibility="gone" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/lly_more"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/img_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_theme"
+                    android:paddingLeft="40px"
+                    android:paddingBottom="72px">
+
+                    <TextView
+                        android:id="@+id/tv_hint1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70px"
+                        android:text="当前已抢名额"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="24px" />
+
+                    <TextView
+                        android:id="@+id/tv_precent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_hint1"
+                        android:text="98"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="100px" />
+
+                    <TextView
+                        android:id="@+id/tv_hint2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/tv_precent"
+                        android:layout_marginLeft="10px"
+                        android:layout_toRightOf="@+id/tv_precent"
+                        android:text="%"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="30px" />
+
+
+                    <TextView
+                        android:id="@+id/tv_hint3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_precent"
+                        android:layout_marginTop="43px"
+                        android:text="金额"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="24px" />
+
+                    <TextView
+                        android:id="@+id/tv_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_hint3"
+
+                        android:text="15000"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="60px" />
+
+                    <TextView
+                        android:id="@+id/tv_hint4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/tv_money"
+                        android:layout_marginLeft="10px"
+                        android:layout_toRightOf="@+id/tv_money"
+                        android:text="元"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="30px" />
+
+                    <View
+                        android:id="@+id/view_line"
+                        android:layout_width="1px"
+                        android:layout_height="83px"
+                        android:layout_alignTop="@+id/tv_hint3"
+                        android:layout_alignBottom="@+id/tv_money"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginRight="60px"
+                        android:background="@color/colorWhite" />
+
+
+                    <TextView
+                        android:id="@+id/tv_hint5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/tv_hint3"
+                        android:layout_toRightOf="@+id/view_line"
+                        android:text="期限"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="24px" />
+
+                    <TextView
+                        android:id="@+id/tv_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_hint5"
+                        android:layout_alignLeft="@+id/tv_hint5"
+                        android:text="15"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="60px" />
+
+                    <TextView
+                        android:id="@+id/tv_hint6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/tv_day"
+                        android:layout_marginLeft="10px"
+                        android:layout_toRightOf="@+id/tv_day"
+                        android:text="元"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="30px" />
+
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30px"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="50px">
+
+                    <View
+                        android:layout_width="4px"
+                        android:layout_height="32px"
+                        android:background="#FC291D" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:text="借款说明"
+                        android:textColor="@color/color333333"
+                        android:textSize="28px" />
+
+                </com.zhy.autolayout.AutoLinearLayout>
+
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="72px"
+                    android:layout_marginTop="15px"
+                    android:layout_marginRight="41px"
+                    android:lineSpacingExtra="20px"
+                    android:text="举例：借款15000元，期限为15天，6个月之后一次性自 动扣款或手动扣款 最快一天放款 日利率：0.01% 还款方式：1.银行代扣；2.主动还款 服务费：138元"
+                    android:textColor="@color/color666666"
+                    android:textSize="26px" />
+
+
+                <TextView
+                    android:id="@+id/tv_content_remark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="72px"
+                    android:layout_marginTop="15px"
+                    android:layout_marginRight="41px"
+                    android:lineSpacingExtra="20px"
+                    android:text="借款之前扣除服务费198元"
+                    android:textColor="@color/color333333"
+                    android:textSize="26px"
+                    android:textStyle="bold" />
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30px"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="50px">
+
+                    <View
+                        android:layout_width="4px"
+                        android:layout_height="32px"
+                        android:background="#FC291D" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:text="审核流程"
+                        android:textColor="@color/color333333"
+                        android:textSize="28px" />
+
+                </com.zhy.autolayout.AutoLinearLayout>
+
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorLine" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorWhite"
+                android:gravity="center"
+                android:text="服务费：198借币"
+                android:textColor="@color/color666666"
+                android:textSize="32px" />
+
+            <TextView
+                android:id="@+id/tv_loan"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/shape_btn_common"
+                android:gravity="center"
+                android:text="去借款"
+                android:textColor="@color/colorWhite"
+                android:textSize="32px" />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</layout>

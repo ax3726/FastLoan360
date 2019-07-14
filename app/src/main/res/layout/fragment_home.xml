@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="498px"
+            android:layout_marginLeft="101px"
+            android:layout_marginTop="80px"
+            android:layout_marginRight="101px"
+            android:background="@mipmap/home_round_icon">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥20000"
+                    android:textColor="@color/colorText"
+                    android:textSize="64px"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10px"
+                    android:text="最高可借(元)"
+                    android:textColor="@color/color868686"
+                    android:textSize="20px"
+                    android:textStyle="bold" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+
+        </com.zhy.autolayout.AutoFrameLayout>
+
+        <Button
+            android:id="@+id/btn_loan"
+            android:layout_width="300px"
+            android:layout_height="72px"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="107px"
+            android:background="@drawable/shape_btn_home"
+            android:text="立即借款"
+            android:textColor="@color/colorWhite"
+            android:textSize="24px" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="68px"
+            android:layout_marginRight="58px"
+            android:orientation="horizontal"
+            android:layout_marginTop="93px"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:drawablePadding="16px"
+                android:drawableLeft="@mipmap/safe"
+                android:textColor="@color/color999999"
+                android:textSize="20px"
+                android:text="0抵押0担保"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:drawablePadding="16px"
+                android:drawableLeft="@mipmap/plane"
+                android:textColor="@color/color999999"
+                android:textSize="20px"
+                android:layout_centerInParent="true"
+                android:text="极速到账"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:drawablePadding="16px"
+                android:layout_alignParentRight="true"
+                android:drawableLeft="@mipmap/conins"
+                android:textColor="@color/color999999"
+                android:textSize="20px"
+                android:text="额度高达10万"
+                android:layout_height="wrap_content" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:background="@mipmap/home_footer_icon"
+            android:layout_height="140px"/>
+
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</layout>

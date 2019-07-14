@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xjd.a360fastloan">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:name=".common.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.home.ProductInfoActivity" />
+        <activity android:name=".ui.home.SmartRecommendActivity" />
+        <activity android:name=".ui.home.CreditAssessActivity" />
+        <activity android:name=".ui.home.AffirmBankActivity" />
+        <activity android:name=".ui.home.AddContactInfoActivity" />
+        <activity android:name=".ui.home.AddIdCardActivity" />
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
+
+        <activity android:name=".ui.mian.LoginActivity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.xjd.a360fastloan.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".ui.mian.SplashActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.mian.MainActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".ui.mine.AboutActivity" />
+        <activity android:name=".ui.mine.RechageActivity" />
+        <activity android:name=".ui.mine.ProposalActivity" />
+        <activity android:name=".ui.mine.PersonalActivity" />
+        <activity android:name=".ui.mine.BaiseInformationActivity" />
+        <activity android:name=".ui.mine.JobInformationActivity" />
+        <activity android:name=".ui.mine.LinkmanActivity" />
+        <activity android:name=".ui.mine.AccountActivity" />
+        <activity android:name=".ui.mine.AddBankCardActivity" />
+        <activity android:name=".ui.mine.BankcardActivity" />
+        <activity android:name=".ui.mine.OrderActivity" />
+        <activity android:name=".ui.mine.AuditActivity"></activity>
+    </application>
+
+</manifest>

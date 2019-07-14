@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+
+
+            <TextView
+                android:padding="20px"
+                android:lineSpacingExtra="15px"
+                android:layout_marginTop="50px"
+                android:text="         这里是360极速借充值协议这里是360极速借充值 协议这里是360极速借充值协议这里是360极速借充值 协议这里是360极速借充值协议这里是360极速借充值 协议这里是360极速借充值协议这里是360极速借充值 这里是360极速借充值协议这里是360极速借充值协议 这里是360极速借充值协议这里是360极速借充值协议 这里是360极速借充值协议这里是360极速借充值协议 这里是360极速借充值协议这里是360极速借充值协议 这里是360极速借充值协议协议"
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+    </com.zhy.autolayout.AutoLinearLayout>
+</layout>

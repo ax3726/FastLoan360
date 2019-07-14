@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F0F3FF"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_theme"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/view_head"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/head_top" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/lly_head"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/lly_left"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/id_leftBtnImg"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@mipmap/theme_back_icon" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="信用评估页面"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16dp" />
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/lly_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:minWidth="45dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_right"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_right"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="8dp"
+                        android:gravity="center_vertical|right"
+                        android:singleLine="true"
+                        android:textColor="@color/color333333"
+                        android:textSize="14dp"
+                        android:visibility="gone" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/lly_more"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/img_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_theme"
+                    android:paddingLeft="30px"
+                    android:paddingTop="20px"
+                    android:paddingRight="42px"
+                    android:paddingBottom="197px">
+
+                    <TextView
+                        android:id="@+id/tv_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="769"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="76px" />
+
+                    <TextView
+                        android:id="@+id/tv_num_hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/tv_num"
+                        android:layout_marginLeft="10px"
+                        android:layout_marginBottom="10px"
+                        android:layout_toRightOf="@+id/tv_num"
+                        android:text="分"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="36px" />
+
+                    <TextView
+                        android:id="@+id/tv_txt1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_num"
+                        android:layout_marginTop="10px"
+                        android:text="建议授信额度"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="24px" />
+
+                    <TextView
+                        android:id="@+id/tv_txt2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_txt1"
+                        android:layout_marginTop="20px"
+                        android:text="2000-10000元"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="38px" />
+
+                    <TextView
+                        android:id="@+id/tv_txt3"
+                        android:layout_width="352px"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_txt2"
+                        android:layout_marginTop="29px"
+                        android:lineSpacingExtra="10px"
+                        android:text="逾期记录可能影响对您的信用评价， 请保持个人信息稳定，避免发生逾期 行为，这对您的信用分非常重要"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="22px" />
+
+
+                    <ImageView
+                        android:layout_width="284px"
+                        android:layout_height="261px"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="55px"
+                        android:src="@mipmap/assess_bg" />
+
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginTop="-113px"
+                    android:layout_marginRight="30px"
+                    android:background="@drawable/shape_white_common"
+                    android:paddingLeft="60px"
+                    android:paddingTop="44px"
+                    android:paddingRight="41px"
+                    android:paddingBottom="44px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@mipmap/assess_titile1"
+                        android:drawablePadding="15px"
+                        android:text="基本信息"
+                        android:textColor="@color/color4A4A4A"
+                        android:textSize="30px" />
+
+                    <TextView
+                        android:id="@+id/tv_risk1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="低"
+                        android:textColor="@color/colorFF2C5B"
+                        android:textSize="28px" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/tv_risk1"
+                        android:text="风险等级："
+                        android:textColor="@color/color4A4A4A"
+                        android:textSize="28px" />
+
+
+                    <TextView
+                        android:id="@+id/tv_con1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_risk1"
+                        android:layout_marginTop="27px"
+                        android:lineSpacingExtra="10px"
+                        android:text="实名认证行为和真是职业经历信息，是信用分的评估 因素之一"
+                        android:textColor="@color/color999999"
+                        android:textSize="26px" />
+
+
+                    <TextView
+                        android:id="@+id/tv_label1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_con1"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="14px"
+                        android:background="@drawable/shape_theme_txt"
+                        android:paddingLeft="21px"
+                        android:paddingTop="4px"
+                        android:paddingRight="21px"
+                        android:paddingBottom="4px"
+                        android:text="工作信息"
+                        android:textColor="@color/colorText"
+                        android:textSize="22px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/tv_label1"
+                        android:layout_marginTop="14px"
+                        android:layout_marginRight="10px"
+                        android:layout_toLeftOf="@+id/tv_label1"
+                        android:background="@drawable/shape_theme_txt"
+                        android:paddingLeft="21px"
+                        android:paddingTop="4px"
+                        android:paddingRight="21px"
+                        android:paddingBottom="4px"
+                        android:text="身份证"
+                        android:textColor="@color/colorText"
+                        android:textSize="22px" />
+
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginTop="30px"
+                    android:layout_marginRight="30px"
+                    android:background="@drawable/shape_white_common"
+                    android:paddingLeft="60px"
+                    android:paddingTop="44px"
+                    android:paddingRight="41px"
+                    android:paddingBottom="44px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@mipmap/assess_titile2"
+                        android:drawablePadding="15px"
+                        android:text="履约能力"
+                        android:textColor="@color/color4A4A4A"
+                        android:textSize="30px" />
+
+                    <TextView
+                        android:id="@+id/tv_risk2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="中"
+                        android:textColor="#8877F0"
+                        android:textSize="28px" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/tv_risk2"
+                        android:text="风险等级："
+                        android:textColor="@color/color4A4A4A"
+                        android:textSize="28px" />
+
+
+                    <TextView
+                        android:id="@+id/tv_con2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_risk2"
+                        android:layout_marginTop="27px"
+                        android:lineSpacingExtra="10px"
+                        android:text="丰富的收阅记录将帮助您获得更高的信用分，失信记 录将给您的信用分带来负面影响。"
+                        android:textColor="@color/color999999"
+                        android:textSize="26px" />
+
+
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginTop="30px"
+                    android:layout_marginRight="30px"
+                    android:background="@drawable/shape_white_common"
+                    android:paddingLeft="60px"
+                    android:paddingTop="44px"
+                    android:paddingRight="41px"
+                    android:paddingBottom="44px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@mipmap/assess_titile3"
+                        android:drawablePadding="15px"
+                        android:text="关联人"
+                        android:textColor="@color/color4A4A4A"
+                        android:textSize="30px" />
+
+                    <TextView
+                        android:id="@+id/tv_risk3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="高"
+                        android:textColor="#7ED321"
+                        android:textSize="28px" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/tv_risk3"
+                        android:text="风险等级："
+                        android:textColor="@color/color4A4A4A"
+                        android:textSize="28px" />
+
+
+                    <TextView
+                        android:id="@+id/tv_con3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_risk3"
+                        android:layout_marginTop="27px"
+                        android:lineSpacingExtra="10px"
+                        android:text="人脉关系的相对稳定等因素，是中和评估的考量因素 之一。"
+                        android:textColor="@color/color999999"
+                        android:textSize="26px" />
+
+
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginTop="30px"
+                    android:layout_marginRight="30px"
+                    android:background="@drawable/shape_white_common"
+                    android:paddingLeft="60px"
+                    android:paddingTop="44px"
+                    android:paddingRight="41px"
+                    android:paddingBottom="44px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@mipmap/assess_titile4"
+                        android:drawablePadding="15px"
+                        android:text="行为"
+                        android:textColor="@color/color4A4A4A"
+                        android:textSize="30px" />
+
+                    <TextView
+                        android:id="@+id/tv_risk4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="中"
+                        android:textColor="#8877F0"
+                        android:textSize="28px" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/tv_risk4"
+                        android:text="风险等级："
+                        android:textColor="@color/color4A4A4A"
+                        android:textSize="28px" />
+
+
+                    <TextView
+                        android:id="@+id/tv_con4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_risk4"
+                        android:layout_marginTop="27px"
+                        android:lineSpacingExtra="10px"
+                        android:text="人脉关系的相对稳定等因素，是中和评估的考量因素 之一。"
+                        android:textColor="@color/color999999"
+                        android:textSize="26px" />
+
+
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginTop="30px"
+                    android:layout_marginRight="30px"
+                    android:background="@drawable/shape_white_common"
+                    android:paddingLeft="60px"
+                    android:paddingTop="44px"
+                    android:paddingRight="41px"
+                    android:paddingBottom="44px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@mipmap/assess_titile5"
+                        android:drawablePadding="15px"
+                        android:text="多平台借款"
+                        android:textColor="@color/color4A4A4A"
+                        android:textSize="30px" />
+
+                    <TextView
+                        android:id="@+id/tv_risk5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="中"
+                        android:textColor="#8877F0"
+                        android:textSize="28px" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/tv_risk5"
+                        android:text="风险等级："
+                        android:textColor="@color/color4A4A4A"
+                        android:textSize="28px" />
+
+
+                    <TextView
+                        android:id="@+id/tv_con5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_risk5"
+                        android:layout_marginTop="27px"
+                        android:lineSpacingExtra="10px"
+                        android:text="短时间内在多平台申请借款，并存在预期行为对您的 信用分很重要。"
+                        android:textColor="@color/color999999"
+                        android:textSize="26px" />
+
+
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30px"
+                    android:layout_marginBottom="30px"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30px"
+                        android:layout_height="30px"
+                        android:src="@mipmap/login_check" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5px"
+                        android:text="我已阅读并同意"
+                        android:textColor="@color/color666666"
+                        android:textSize="24px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5px"
+                        android:text="《评估及推荐服务协议》"
+                        android:textColor="@color/colorText"
+                        android:textSize="24px" />
+
+                </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorWhite"
+                android:gravity="center"
+                android:text="服务费：198借币"
+                android:textColor="@color/color666666"
+                android:textSize="32px" />
+            <TextView
+                android:id="@+id/tv_loan"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/shape_btn_common"
+                android:gravity="center"
+                android:text="去借款"
+                android:textColor="@color/colorWhite"
+                android:textSize="32px" />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</layout>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:background="@color/colorF0F3FF"
+            />
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:paddingLeft="30px"
+            android:paddingRight="30px"
+            android:paddingBottom="30px"
+            android:paddingTop="34px"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/tv_title_1"
+                android:layout_width="wrap_content"
+               android:textColor="@color/color3A3A3A"
+                android:text="直属联系人"
+                android:textSize="24px"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:id="@+id/vie_line_1"
+                android:layout_below="@+id/tv_title_1"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="9px"
+                android:background="@color/colorLine" />
+
+
+            <TextView
+                android:layout_below="@+id/vie_line_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:text="关系："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+
+            <TextView
+                android:id="@+id/tv_relation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vie_line_1"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:layout_marginTop="30px"
+                android:background="@color/colorWhite"
+                android:drawableRight="@mipmap/right_icon"
+                android:drawablePadding="15px"
+                android:gravity="right"
+                android:hint="请选择"
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+
+            <View
+                android:id="@+id/vie_line_2"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/tv_relation"
+                android:layout_marginTop="30px"
+                android:background="@color/colorLine" />
+
+
+            <TextView
+                android:layout_below="@+id/vie_line_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:text="姓名："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:layout_below="@+id/vie_line_2"
+                android:layout_marginTop="30px"
+                android:background="@color/colorWhite"
+                android:gravity="right"
+                android:hint="请输入姓名"
+                android:textColor="@color/color333333"
+                android:textSize="28px" />
+
+            <View
+                android:id="@+id/vie_line_3"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/et_name"
+                android:layout_marginTop="30px"
+                android:background="@color/colorLine" />
+
+            <TextView
+                android:layout_below="@+id/vie_line_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:text="电话："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:layout_below="@+id/vie_line_3"
+                android:layout_marginTop="30px"
+                android:background="@color/colorWhite"
+                android:gravity="right"
+                android:hint="请输入电话"
+                android:textColor="@color/color333333"
+                android:textSize="28px" />
+
+            <View
+                android:id="@+id/vie_line_4"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/et_phone"
+                android:layout_marginTop="30px"
+                android:background="@color/colorLine" />
+
+
+            <TextView
+                android:id="@+id/tv_title_2"
+                android:layout_below="@+id/vie_line_4"
+                android:layout_width="wrap_content"
+                android:textColor="@color/color3A3A3A"
+                android:text="重要联系人"
+                android:layout_marginTop="34px"
+                android:textSize="24px"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:id="@+id/vie_line_5"
+                android:layout_below="@+id/tv_title_2"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="9px"
+                android:layout_marginBottom="30px"
+                android:background="@color/colorLine" />
+
+
+            <TextView
+                android:layout_below="@+id/vie_line_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:text="关系："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+
+            <TextView
+                android:id="@+id/tv_relation_z"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vie_line_5"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:layout_marginTop="30px"
+                android:background="@color/colorWhite"
+                android:drawableRight="@mipmap/right_icon"
+                android:drawablePadding="15px"
+                android:gravity="right"
+                android:hint="请选择"
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+
+            <View
+                android:id="@+id/vie_line_6"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/tv_relation_z"
+                android:layout_marginTop="30px"
+                android:background="@color/colorLine" />
+
+
+            <TextView
+                android:layout_below="@+id/vie_line_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:text="姓名："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_name_z"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:layout_below="@+id/vie_line_6"
+                android:layout_marginTop="30px"
+                android:background="@color/colorWhite"
+                android:gravity="right"
+                android:hint="请输入姓名"
+                android:textColor="@color/color333333"
+                android:textSize="28px" />
+
+            <View
+                android:id="@+id/vie_line_7"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/et_name_z"
+                android:layout_marginTop="30px"
+                android:background="@color/colorLine" />
+
+            <TextView
+                android:layout_below="@+id/vie_line_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:text="电话："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_phone_z"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:layout_below="@+id/vie_line_7"
+                android:layout_marginTop="30px"
+                android:background="@color/colorWhite"
+                android:gravity="right"
+                android:hint="请输入电话"
+                android:textColor="@color/color333333"
+                android:textSize="28px" />
+
+            <View
+                android:id="@+id/vie_line_8"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/et_name_z"
+                android:layout_marginTop="30px"
+                android:background="@color/colorLine" />
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <com.zhy.autolayout.AutoFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#F0F3FF">
+
+
+            <Button
+                android:id="@+id/btn_turn"
+                android:layout_width="match_parent"
+                android:layout_height="88px"
+                android:layout_marginLeft="44px"
+                android:layout_marginTop="40px"
+                android:layout_marginRight="44px"
+                android:background="@drawable/shape_btn_common"
+                android:text="下一步"
+                android:textColor="@color/colorWhite"
+                android:textSize="32px" />
+
+
+        </com.zhy.autolayout.AutoFrameLayout>
+
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</layout>

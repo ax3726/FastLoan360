@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120px"
+            android:background="@color/colorF0F3FF"
+            android:orientation="horizontal"
+            android:paddingLeft="30px"
+            android:paddingTop="21px"
+            android:paddingRight="30px">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/info_icon" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5px"
+                android:layout_weight="1"
+                android:lineSpacingExtra="10px"
+                android:text="请拿出本人有效二代身份证件准备拍摄，拍摄时请确保身份证 边框完整、字体清晰、亮度均匀"
+                android:textSize="24px" />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30px"
+            android:paddingLeft="30px"
+            android:paddingRight="30px">
+
+
+            <com.zhy.autolayout.AutoFrameLayout
+                android:id="@+id/fly_just"
+                android:layout_width="310px"
+                android:layout_height="222px"
+                android:background="@mipmap/bank_just_icon">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/camera_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="11px"
+                    android:text="拍摄人像面"
+                    android:textColor="@color/color666666"
+                    android:textSize="28px" />
+
+                <ImageView
+                    android:id="@+id/img_just"
+                    android:scaleType="fitXY"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </com.zhy.autolayout.AutoFrameLayout>
+
+            <com.zhy.autolayout.AutoFrameLayout
+                android:id="@+id/fly_back"
+                android:layout_width="310px"
+                android:layout_height="222px"
+                android:layout_alignParentRight="true"
+                android:background="@mipmap/bank_back_icon">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="11px"
+                    android:text="拍摄国徽面"
+                    android:textColor="@color/color666666"
+                    android:textSize="28px" />
+
+                <ImageView
+                    android:id="@+id/img_back"
+                    android:scaleType="fitXY"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </com.zhy.autolayout.AutoFrameLayout>
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60px"
+            android:paddingLeft="30px"
+            android:paddingRight="30px"
+            android:paddingBottom="30px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:text="真实姓名："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:layout_marginTop="30px"
+                android:background="@color/colorWhite"
+                android:gravity="right"
+                android:hint="请输入姓名"
+                android:textColor="@color/color333333"
+                android:textSize="28px" />
+
+            <View
+                android:id="@+id/vie_line_1"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/et_name"
+                android:layout_marginTop="30px"
+                android:background="@color/colorLine" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vie_line_1"
+                android:layout_marginTop="30px"
+                android:text="性别："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <TextView
+                android:id="@+id/tv_sex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vie_line_1"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:layout_marginTop="30px"
+                android:background="@color/colorWhite"
+                android:drawableRight="@mipmap/right_icon"
+                android:drawablePadding="15px"
+                android:gravity="right"
+                android:hint="请选择"
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <View
+                android:id="@+id/vie_line_2"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/tv_sex"
+                android:layout_marginTop="30px"
+                android:background="@color/colorLine" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vie_line_2"
+                android:layout_marginTop="30px"
+                android:text="身份证号码："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_idcard_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vie_line_2"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:layout_marginTop="30px"
+                android:background="@color/colorWhite"
+                android:gravity="right"
+                android:hint="请输入身份证号码"
+                android:textColor="@color/color333333"
+                android:textSize="28px" />
+
+            <View
+                android:id="@+id/vie_line_3"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/et_idcard_no"
+                android:layout_marginTop="30px"
+                android:background="@color/colorLine" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vie_line_3"
+                android:layout_marginTop="30px"
+                android:text="地址："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vie_line_3"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:layout_marginTop="30px"
+                android:background="@color/colorWhite"
+                android:gravity="right"
+                android:hint="请输入地址"
+                android:textColor="@color/color333333"
+                android:textSize="28px" />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:background="#f6f5f8" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30px"
+            android:paddingRight="30px"
+            android:paddingBottom="30px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:text="学历："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <TextView
+                android:id="@+id/tv_education"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vie_line_1"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:layout_marginTop="30px"
+                android:background="@color/colorWhite"
+                android:drawableRight="@mipmap/right_icon"
+                android:drawablePadding="15px"
+                android:gravity="right"
+                android:hint="请选择"
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <View
+                android:id="@+id/vie_line_4"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/tv_education"
+                android:layout_marginTop="30px"
+                android:background="@color/colorLine" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vie_line_4"
+                android:layout_marginTop="30px"
+                android:text="婚姻状况："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <TextView
+                android:id="@+id/tv_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vie_line_4"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:layout_marginTop="30px"
+                android:background="@color/colorWhite"
+                android:drawableRight="@mipmap/right_icon"
+                android:drawablePadding="15px"
+                android:gravity="right"
+                android:hint="请选择"
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <com.zhy.autolayout.AutoFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#F0F3FF">
+
+
+            <Button
+                android:id="@+id/btn_turn"
+                android:layout_width="match_parent"
+                android:layout_height="88px"
+                android:layout_marginLeft="44px"
+                android:layout_marginTop="40px"
+                android:layout_marginRight="44px"
+                android:background="@drawable/shape_btn_common"
+                android:text="下一步"
+                android:textColor="@color/colorWhite"
+                android:textSize="32px" />
+
+
+        </com.zhy.autolayout.AutoFrameLayout>
+
+
+    </LinearLayout>
+</layout>

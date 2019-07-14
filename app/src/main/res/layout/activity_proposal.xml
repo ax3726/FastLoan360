@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorF0F3FF"
+        android:orientation="vertical">
+        <TextView
+            android:layout_marginTop="10px"
+            android:layout_marginLeft="15px"
+            android:textSize="13sp"
+            android:textColor="#64646b"
+            android:text="您有什么问题或建议想对我们说？"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_1"
+            android:layout_marginTop="10px"
+            android:background="@color/colorWhite"
+            android:gravity="left"
+            android:hint="请详细描述您的问题，有助于我们快速定位并解决问题，或留下 您宝贵的建议或意见，我们会认真进行评"
+            android:minHeight="500px"
+            android:paddingLeft="15px"
+            android:paddingTop="10px"
+            android:paddingRight="15px"
+            android:lineSpacingExtra="10px"
+            android:textColor="@color/color333333"
+            android:textSize="26px" />
+
+        <EditText
+            android:layout_marginTop="30px"
+            android:id="@+id/et_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_1"
+            android:background="@color/colorWhite"
+            android:hint="联系方式：QQ、邮箱、手机号码"
+            android:minHeight="80px"
+            android:paddingLeft="15px"
+            android:paddingRight="15px"
+            android:lineSpacingExtra="10px"
+            android:textColor="@color/color333333"
+            android:textSize="26px" />
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="88px"
+            android:layout_marginLeft="44px"
+            android:layout_marginTop="40px"
+            android:layout_marginRight="44px"
+            android:background="@drawable/shape_btn_common"
+            android:text="提交"
+            android:textColor="@color/colorWhite"
+            android:textSize="32px" />
+    </com.zhy.autolayout.AutoLinearLayout>
+</layout>
