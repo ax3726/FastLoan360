@@ -65,9 +65,10 @@ public abstract class BaseNetListener<T> implements Subscriber<T> {
         } else if (e instanceof ConnectException) {
             err_msg = "未能连接到服务器";
         } else if (e instanceof ResultException) {
-            ResultException resultException = (ResultException) e;
-            if (resultException.getErrCode() == 1001) {//token失效 需要重新登录
 
+            ResultException resultException = (ResultException) e;
+            if (resultException.getErrCode() == 401) {//token失效 需要重新登录
+                EventBus.getDefault().post(new LoginEvent());
             }
             err_msg = e.getMessage();
         } else {

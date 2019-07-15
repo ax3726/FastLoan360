@@ -72,8 +72,7 @@ public class AddIdCardActivity extends PhotoActivity<BasePresenter, ActivityAddI
                         String education = mBinding.tvEducation.getText().toString().trim();
                         String sex       = mBinding.tvSex.getText().toString().trim();
                         String marriage  = mBinding.tvState.getText().toString().trim();
-                        education = "本科";
-                        marriage = "未婚";
+
                         startActivity(new Intent(aty, AffirmBankActivity.class)
                                 .putExtra("name", name)
                                 .putExtra("id_card", no)
