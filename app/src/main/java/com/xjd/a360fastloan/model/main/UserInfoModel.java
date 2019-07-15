@@ -4,6 +4,7 @@ import java.util.List;
 
 public class UserInfoModel {
 
+
     /**
      * id : 2
      * mobile : 15170193726
@@ -12,9 +13,11 @@ public class UserInfoModel {
      * created_at : 2019-07-14 02:05:10
      * updated_at : 2019-07-14 02:05:10
      * deleted_at : null
-     * product : {"id":1,"name":"360极速借","icon":"/storage/files/PtnGH2bPS3Y4r3uPcccwRXBPNDByFTkKnM9tU8bl.png","min":1000,"max":15000,"rebate":"0.60","cycle":"90天","price":"198.00","v_click":"500万","url":null,"created_at":"2019-06-20 13:19:26","updated_at":"2019-06-20 13:19:26","deleted_at":null,"iconsrc":"https://e160c1b6.ngrok.io//storage/files/PtnGH2bPS3Y4r3uPcccwRXBPNDByFTkKnM9tU8bl.png"}
-     * info : null  判断是否填写资料
+     * product : {"id":1,"name":"360极速借","icon":"files/bdacS0dBZDlkp5r0mki8BLBi004B4b4itKFUa3Du.png","min":1000,"max":15000,"rebate":"0.60","cycle":"90天","price":"198.00","v_click":"500万","url":null,"created_at":"2019-06-20 13:19:26","updated_at":"2019-07-15 20:37:27","deleted_at":null,"iconsrc":"http://cash.free.idcfengye.com/storage/files/bdacS0dBZDlkp5r0mki8BLBi004B4b4itKFUa3Du.png"}
+     * info : {"id":2,"user_id":2,"name":"黎明","sex":"男","id_card":"360734199602211310","address":"这个是hi地址","education":"本科","marriage":"未婚","created_at":"2019-07-15 22:00:14","updated_at":"2019-07-15 22:00:14"}
      * card : []
+     * job : null
+     * relation : []
      */
 
     private int id;
@@ -25,8 +28,10 @@ public class UserInfoModel {
     private String updated_at;
     private Object deleted_at;
     private ProductBean product;
-    private Object info;
+    private InfoBean info;
+    private Object job;
     private List<?> card;
+    private List<?> relation;
 
     public int getId() {
         return id;
@@ -92,12 +97,20 @@ public class UserInfoModel {
         this.product = product;
     }
 
-    public Object getInfo() {
+    public InfoBean getInfo() {
         return info;
     }
 
-    public void setInfo(Object info) {
+    public void setInfo(InfoBean info) {
         this.info = info;
+    }
+
+    public Object getJob() {
+        return job;
+    }
+
+    public void setJob(Object job) {
+        this.job = job;
     }
 
     public List<?> getCard() {
@@ -108,11 +121,19 @@ public class UserInfoModel {
         this.card = card;
     }
 
+    public List<?> getRelation() {
+        return relation;
+    }
+
+    public void setRelation(List<?> relation) {
+        this.relation = relation;
+    }
+
     public static class ProductBean {
         /**
          * id : 1
          * name : 360极速借
-         * icon : /storage/files/PtnGH2bPS3Y4r3uPcccwRXBPNDByFTkKnM9tU8bl.png
+         * icon : files/bdacS0dBZDlkp5r0mki8BLBi004B4b4itKFUa3Du.png
          * min : 1000
          * max : 15000
          * rebate : 0.60
@@ -121,9 +142,9 @@ public class UserInfoModel {
          * v_click : 500万
          * url : null
          * created_at : 2019-06-20 13:19:26
-         * updated_at : 2019-06-20 13:19:26
+         * updated_at : 2019-07-15 20:37:27
          * deleted_at : null
-         * iconsrc : https://e160c1b6.ngrok.io//storage/files/PtnGH2bPS3Y4r3uPcccwRXBPNDByFTkKnM9tU8bl.png
+         * iconsrc : http://cash.free.idcfengye.com/storage/files/bdacS0dBZDlkp5r0mki8BLBi004B4b4itKFUa3Du.png
          */
 
         private int id;
@@ -251,6 +272,112 @@ public class UserInfoModel {
 
         public void setIconsrc(String iconsrc) {
             this.iconsrc = iconsrc;
+        }
+    }
+
+    public static class InfoBean {
+        /**
+         * id : 2
+         * user_id : 2
+         * name : 黎明
+         * sex : 男
+         * id_card : 360734199602211310
+         * address : 这个是hi地址
+         * education : 本科
+         * marriage : 未婚
+         * created_at : 2019-07-15 22:00:14
+         * updated_at : 2019-07-15 22:00:14
+         */
+
+        private int id;
+        private int user_id;
+        private String name;
+        private String sex;
+        private String id_card;
+        private String address;
+        private String education;
+        private String marriage;
+        private String created_at;
+        private String updated_at;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public int getUser_id() {
+            return user_id;
+        }
+
+        public void setUser_id(int user_id) {
+            this.user_id = user_id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getSex() {
+            return sex;
+        }
+
+        public void setSex(String sex) {
+            this.sex = sex;
+        }
+
+        public String getId_card() {
+            return id_card;
+        }
+
+        public void setId_card(String id_card) {
+            this.id_card = id_card;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public String getEducation() {
+            return education;
+        }
+
+        public void setEducation(String education) {
+            this.education = education;
+        }
+
+        public String getMarriage() {
+            return marriage;
+        }
+
+        public void setMarriage(String marriage) {
+            this.marriage = marriage;
+        }
+
+        public String getCreated_at() {
+            return created_at;
+        }
+
+        public void setCreated_at(String created_at) {
+            this.created_at = created_at;
+        }
+
+        public String getUpdated_at() {
+            return updated_at;
+        }
+
+        public void setUpdated_at(String updated_at) {
+            this.updated_at = updated_at;
         }
     }
 }

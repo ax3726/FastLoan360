@@ -9,11 +9,16 @@ import android.view.KeyEvent;
 import android.widget.RadioGroup;
 
 import com.lm.lib_common.base.BaseActivity;
+import com.lm.lib_common.base.BaseNetListener;
 import com.lm.lib_common.base.BasePresenter;
 import com.lm.lib_common.model.LoginEvent;
 import com.lm.lib_common.utils.DoubleClickExitHelper;
 import com.xjd.a360fastloan.R;
+import com.xjd.a360fastloan.common.Api;
+import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivityMainBinding;
+import com.xjd.a360fastloan.model.main.UserEvent;
+import com.xjd.a360fastloan.model.main.UserInfoModel;
 import com.xjd.a360fastloan.ui.home.HomeFragment;
 import com.xjd.a360fastloan.ui.mine.MineFragment;
 
@@ -121,6 +126,28 @@ public class MainActivity extends BaseActivity<BasePresenter, ActivityMainBindin
     public void toLogin(LoginEvent event) {
         startActivity(LoginActivity.class);
         finish();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void toUser(UserEvent event) {
+        getUserInfo();
+    }
+
+    private void getUserInfo() {
+        Api.getApi().getUserInfo()
+                .compose(callbackOnIOToMainThread())
+                .subscribe(new BaseNetListener<UserInfoModel>(this, false) {
+                    @Override
+                    public void onSuccess(UserInfoModel userInfoModel) {
+                        MyApplication.getInstance().setUserInfo(userInfoModel);
+
+                    }
+
+                    @Override
+                    public void onFail(String errMsg) {
+
+                    }
+                });
     }
 
     @Override

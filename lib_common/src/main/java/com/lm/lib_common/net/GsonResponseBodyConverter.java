@@ -39,6 +39,9 @@ public class GsonResponseBodyConverter<T> implements Converter<ResponseBody, T> 
     public T convert(ResponseBody value) throws IOException {
 
         String response = value.string();
+        if (TextUtils.isEmpty(response)) {
+            response="成功!";
+        }
         Log.e("msg", "response" + response);
         try {
 

@@ -1,13 +1,14 @@
 package com.xjd.a360fastloan.ui.home;
 
+import android.content.Intent;
 import android.view.View;
 
 import com.lm.lib_common.base.BaseFragment;
 import com.lm.lib_common.base.BaseFragmentPresenter;
-import com.lm.lib_common.base.BaseNetListener;
 import com.xjd.a360fastloan.R;
-import com.xjd.a360fastloan.common.Api;
+import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.FragmentHomeBinding;
+import com.xjd.a360fastloan.model.main.UserInfoModel;
 
 /**
  * @author ：LiMing
@@ -50,7 +51,13 @@ public class HomeFragment extends BaseFragment<BaseFragmentPresenter, FragmentHo
         mBinding.btnLoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(AddIdCardActivity.class);
+                UserInfoModel userInfo = MyApplication.getInstance().getUserInfo();
+                if (userInfo != null && userInfo.getInfo() != null && userInfo.getProduct() != null) {
+                    startActivity(new Intent(aty, ProductInfoActivity.class).putExtra("id", userInfo.getProduct().getId()));
+                } else {
+                    startActivity(AddIdCardActivity.class);
+                }
+
             }
         });
 

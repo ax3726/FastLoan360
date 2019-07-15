@@ -172,7 +172,6 @@
                 android:layout_marginTop="30px"
                 android:layout_toRightOf="@+id/tv_code_hint"
                 android:background="@color/colorWhite"
-                android:gravity="right"
                 android:hint="请输入验证码"
                 android:textColor="@color/color333333"
                 android:textSize="28px" />
