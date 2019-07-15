@@ -61,7 +61,8 @@
         <activity android:name=".ui.mine.BankcardActivity" />
         <activity android:name=".ui.mine.OrderActivity" />
         <activity android:name=".ui.mine.AuditActivity" />
-        <activity android:name=".ui.mine.DrawbackActivity"></activity>
+        <activity android:name=".ui.mine.DrawbackActivity" />
+        <activity android:name=".ui.mine.ProductDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@
         android:orientation="vertical">
 
             <ImageView
+                android:scaleType="fitXY"
                 android:layout_width="match_parent"
                 android:layout_height="195px"
                 android:src="@drawable/icon_tuikuan" />

@@ -87,7 +87,6 @@ public class AccountActivity extends BaseActivity<BasePresenter,ActivityAccountB
 
                 TextView textView = (TextView) view.findViewById(R.id.tv);
                 money=textView.getText().toString();
-                showToast(""+position);
             }
         });
 

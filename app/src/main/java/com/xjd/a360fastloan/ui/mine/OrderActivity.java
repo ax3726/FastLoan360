@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.lm.lib_common.adapters.recyclerview.CommonAdapter;
 import com.lm.lib_common.adapters.recyclerview.base.ViewHolder;
 import com.lm.lib_common.base.BaseActivity;
@@ -24,6 +25,7 @@ import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivityOrderBinding;
 import com.xjd.a360fastloan.model.home.ProductListModel;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -63,14 +65,17 @@ public class OrderActivity extends BaseActivity<BasePresenter, ActivityOrderBind
         mBinding.tv02.setText("额度"+MyApplication.getInstance().getUserInfo().getProduct().getMax()+"元");
         mBinding.tv04.setText("周期"+MyApplication.getInstance().getUserInfo().getProduct().getCycle());
         mBinding.tv03.setText("¥  "+MyApplication.getInstance().getUserInfo().getProduct().getPrice());
-
+        Glide.with(this).load(MyApplication.getInstance().getUserInfo().getProduct().getIconsrc()).into(mBinding.image01);
         getProducts();
         mAdapter = new CommonAdapter<ProductListModel>(aty, R.layout.selectorderlistviewlay, mDataList) {
             @Override
             protected void convert(ViewHolder holder, ProductListModel productListModel, int position) {
+
                  holder.setText(R.id.tv_01,mDataList.get(position).getName())
                  .setImageurl(R.id.image_01,mDataList.get(position).getIconsrc(),0)
-                         .setText(R.id.tv_02,mDataList.get(position).getMin()+"-"+mDataList.get(position).getMax()+"元");
+                         .setText(R.id.tv_02,mDataList.get(position).getMin()+"-"+mDataList.get(position).getMax()+"元")
+                         .setText(R.id.tv_04,mDataList.get(position).getRebate()+"%")
+                         .setText(R.id.tv_06,mDataList.get(position).getV_click()+"万申请");
 
                holder.getView(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
                    @Override

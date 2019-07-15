@@ -10,11 +10,6 @@ import com.xjd.a360fastloan.databinding.ActivityDrawbackBinding;
 
 public class DrawbackActivity extends BaseActivity<BasePresenter,ActivityDrawbackBinding> {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drawback);
-    }
 
     @Override
     protected boolean isTitleBar() {
