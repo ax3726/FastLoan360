@@ -11,7 +11,6 @@ import com.xjd.a360fastloan.R;
 import com.xjd.a360fastloan.common.Api;
 import com.xjd.a360fastloan.databinding.ActivityAffirmBankBinding;
 import com.xjd.a360fastloan.model.home.BankModel;
-import com.xjd.a360fastloan.model.home.ProdectInfoModel;
 
 public class AffirmBankActivity extends BaseActivity<BasePresenter, ActivityAffirmBankBinding> {
 
@@ -60,6 +59,12 @@ public class AffirmBankActivity extends BaseActivity<BasePresenter, ActivityAffi
     @Override
     protected void initEvent() {
         super.initEvent();
+        mBinding.llyCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mBinding.imgCheck.setSelected(!mBinding.imgCheck.isSelected());
+            }
+        });
         mBinding.btnTurn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,12 +83,8 @@ public class AffirmBankActivity extends BaseActivity<BasePresenter, ActivityAffi
                 check();
             }
         });
-        mBinding.llyCheck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mBinding.imgCheck.setSelected(!mBinding.imgCheck.isSelected());
-            }
-        });
+
+
     }
 
     private void check() {
@@ -146,9 +147,9 @@ public class AffirmBankActivity extends BaseActivity<BasePresenter, ActivityAffi
         }
         Api.getApi().addUserInfo(name, sex, id_card, address, education, marriage, bank, bank_phone, type, bank_date, bank_bei)
                 .compose(callbackOnIOToMainThread())
-                .subscribe(new BaseNetListener<ProdectInfoModel>(this, true) {
+                .subscribe(new BaseNetListener<String>(this, true) {
                     @Override
-                    public void onSuccess(ProdectInfoModel infoModel) {
+                    public void onSuccess(String infoModel) {
 
                     }
 

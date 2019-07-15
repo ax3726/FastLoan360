@@ -311,7 +311,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorWhite"
                 android:gravity="center"
-                android:text="服务费：198借币"
+                android:text="服务费：0借币"
                 android:textColor="@color/color666666"
                 android:textSize="32px" />
 

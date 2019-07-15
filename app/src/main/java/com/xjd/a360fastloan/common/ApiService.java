@@ -4,6 +4,7 @@ package com.xjd.a360fastloan.common;
 import com.lm.lib_common.model.BaseBean;
 import com.xjd.a360fastloan.model.home.BankModel;
 import com.xjd.a360fastloan.model.home.IdCardModel;
+import com.xjd.a360fastloan.model.home.OrderModel;
 import com.xjd.a360fastloan.model.home.ProdectInfoModel;
 import com.xjd.a360fastloan.model.home.ProductListModel;
 import com.xjd.a360fastloan.model.main.LoginModel;
@@ -70,13 +71,22 @@ public interface ApiService {
     @GET("api/users/check")
     Flowable<BankModel> checkBank(@Query("type") String type, @Query("info") String info);
 
+    /**
+     * 下单
+     *
+     * @param product_id
+     * @return
+     */
+    @GET("api/orders")
+    Flowable<OrderModel> addOrders(@Query("product_id") String product_id);
+
     //获取当前用户信息
     @GET("api/users")
     Flowable<UserInfoModel> getUserInfo();
 
     //添加个人信息
-    @GET("api/users/info")
-    Flowable<ProdectInfoModel> addUserInfo(@Query("name") String name,
+    @POST("api/users/info")
+    Flowable<String> addUserInfo(@Query("name") String name,
                                            @Query("sex") String sex,
                                            @Query("id_card") String id_card,
                                            @Query("address") String address,

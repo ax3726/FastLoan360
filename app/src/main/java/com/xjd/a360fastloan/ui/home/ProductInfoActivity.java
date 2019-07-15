@@ -1,5 +1,6 @@
 package com.xjd.a360fastloan.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,14 +11,15 @@ import com.lm.lib_common.base.BasePresenter;
 import com.xjd.a360fastloan.R;
 import com.xjd.a360fastloan.common.Api;
 import com.xjd.a360fastloan.databinding.ActivityProductInfoBinding;
+import com.xjd.a360fastloan.model.home.OrderModel;
 import com.xjd.a360fastloan.model.home.ProdectInfoModel;
-import com.xjd.a360fastloan.ui.mian.MainActivity;
 
 import java.text.DecimalFormat;
 
 public class ProductInfoActivity extends BaseActivity<BasePresenter, ActivityProductInfoBinding> {
 
     private int mId = 0;
+    private ProdectInfoModel mProdectInfoModel = null;
 
     @Override
     protected int getLayoutId() {
@@ -46,10 +48,29 @@ public class ProductInfoActivity extends BaseActivity<BasePresenter, ActivityPro
         mBinding.tvLoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                startActivity(MainActivity.class);
+                addOrders();
             }
         });
+    }
+
+    private void addOrders() {
+        if (mProdectInfoModel == null) {
+            showToast("数据有误！");
+            return;
+        }
+        Api.getApi().addOrders(mProdectInfoModel.getId() + "")
+                .compose(callbackOnIOToMainThread())
+                .subscribe(new BaseNetListener<OrderModel>(this, true) {
+                    @Override
+                    public void onSuccess(OrderModel orderModel) {
+                        startActivity(new Intent(aty,OrderPayActivity.class).putExtra("id",orderModel.getOrder_id()));
+                    }
+
+                    @Override
+                    public void onFail(String errMsg) {
+
+                    }
+                });
     }
 
     @Override
@@ -62,7 +83,7 @@ public class ProductInfoActivity extends BaseActivity<BasePresenter, ActivityPro
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
-       // mBinding.tvContent.setText("举例：借款15000元，期限为15天，6个月之后一次性自 动扣款或手动扣款 \n最快一天放款 \n日利率：0.01% \n还款方式：1.银行代扣；2.主动还款 \n服务费：138元");
+        // mBinding.tvContent.setText("举例：借款15000元，期限为15天，6个月之后一次性自 动扣款或手动扣款 \n最快一天放款 \n日利率：0.01% \n还款方式：1.银行代扣；2.主动还款 \n服务费：138元");
     }
 
     private void getProductInfo() {
@@ -71,12 +92,15 @@ public class ProductInfoActivity extends BaseActivity<BasePresenter, ActivityPro
                 .subscribe(new BaseNetListener<ProdectInfoModel>(this, true) {
                     @Override
                     public void onSuccess(ProdectInfoModel infoModel) {
-                        DecimalFormat df = new DecimalFormat("000.00%");
-                        mBinding.tvPrecent.setText(df.format(infoModel.getRebate()));
-                        mBinding.tvMoney.setText(infoModel.getMax());
+                        mProdectInfoModel = infoModel;
+                        DecimalFormat df = new DecimalFormat("000%");
+                        mBinding.tvPrecent.setText(df.format(Double.valueOf(infoModel.getRebate())).replace("%", ""));
+                        mBinding.tvMoney.setText(infoModel.getMax() + ""
+                        );
                         mBinding.tvDay.setText(TextUtils.isEmpty(infoModel.getCycle()) ? "0" : infoModel.getCycle().replace("天", ""));
                         mBinding.tvContent.setText("举例：借款15000元，期限为15天，6个月之后一次性自 动扣款或手动扣款 \n最快一天放款 \n日利率：0.01% \n还款方式：1.银行代扣；2.主动还款 \n服务费：" + infoModel.getPrice() + "元");
                         mBinding.tvContentRemark.setText("借款之前扣除服务费" + infoModel.getPrice() + "元");
+                        mBinding.tvPrice.setText("服务费：" + infoModel.getPrice() + "借币");
                     }
 
                     @Override

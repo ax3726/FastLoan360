@@ -21,75 +21,12 @@
             android:paddingBottom="30px">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/vie_line_1"
-                android:text="持卡人姓名："
-                android:textColor="@color/color999999"
-                android:textSize="28px" />
-
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/vie_line_1"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="140px"
-                android:background="@color/colorWhite"
-
-                android:gravity="right"
-                android:hint="蒋云臣"
-                android:textColor="@color/color999999"
-                android:textSize="28px" />
-
-
-            <View
-                android:id="@+id/vie_line_2"
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_below="@+id/tv_name"
-                android:layout_marginTop="30px"
-                android:background="@color/colorLine" />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/vie_line_2"
-                android:layout_marginTop="30px"
-                android:text="身份证号码："
-                android:textColor="@color/color999999"
-                android:textSize="28px" />
 
-            <TextView
-                android:id="@+id/tv_idcard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/vie_line_2"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="140px"
-                android:layout_marginTop="30px"
-                android:background="@color/colorWhite"
-                android:gravity="right"
-                android:hint="612324199900800018"
-                android:textColor="@color/color999999"
-                android:textSize="28px" />
-
-            <View
-                android:id="@+id/vie_line_3"
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_below="@+id/tv_idcard"
-                android:layout_marginTop="30px"
-                android:background="@color/colorLine" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/vie_line_3"
-                android:layout_marginTop="30px"
                 android:text="卡号："
                 android:textColor="@color/color999999"
                 android:textSize="28px" />
@@ -98,10 +35,8 @@
                 android:id="@+id/et_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/vie_line_3"
                 android:layout_alignParentRight="true"
                 android:layout_marginLeft="140px"
-                android:layout_marginTop="30px"
                 android:background="@color/colorWhite"
                 android:gravity="right"
                 android:hint="请输入银行卡号"
