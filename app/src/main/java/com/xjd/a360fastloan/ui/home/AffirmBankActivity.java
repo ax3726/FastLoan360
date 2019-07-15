@@ -63,6 +63,12 @@ public class AffirmBankActivity extends BaseActivity<BasePresenter, ActivityAffi
         mBinding.btnTurn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean selected = mBinding.imgCheck.isSelected();
+                if (!selected) {
+                    showToast("请接受协议!");
+                    return;
+                }
+
                 startActivity(CreditAssessActivity.class);
             }
         });
@@ -70,6 +76,12 @@ public class AffirmBankActivity extends BaseActivity<BasePresenter, ActivityAffi
             @Override
             public void onClick(View view) {
                 check();
+            }
+        });
+        mBinding.llyCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mBinding.imgCheck.setSelected(!mBinding.imgCheck.isSelected());
             }
         });
     }

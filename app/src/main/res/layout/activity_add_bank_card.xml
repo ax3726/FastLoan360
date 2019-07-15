@@ -224,7 +224,7 @@
                 <ImageView
                     android:layout_width="30px"
                     android:layout_height="30px"
-                    android:src="@mipmap/login_check" />
+                    android:src="@drawable/selector_check" />
 
                 <TextView
                     android:layout_width="wrap_content"

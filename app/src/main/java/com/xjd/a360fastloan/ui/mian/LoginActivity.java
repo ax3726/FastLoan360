@@ -1,10 +1,8 @@
 package com.xjd.a360fastloan.ui.mian;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 
-import com.google.gson.Gson;
 import com.lm.lib_common.base.BaseActivity;
 import com.lm.lib_common.base.BaseNetListener;
 import com.lm.lib_common.base.BasePresenter;
@@ -40,7 +38,7 @@ public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBind
         mBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 login();
+                login();
             }
         });
         mBinding.tvCode.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +50,12 @@ public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBind
                     return;
                 }
                 getCode(phone);
+            }
+        });
+        mBinding.llyCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mBinding.imgCheck.setSelected(!mBinding.imgCheck.isSelected());
             }
         });
     }
@@ -73,7 +77,9 @@ public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBind
 
     private void login() {
         String phone = mBinding.etPhone.getText().toString();
-        String code  = mBinding.etCode.getText().toString();
+        String code = mBinding.etCode.getText().toString();
+        boolean selected = mBinding.imgCheck.isSelected();
+
         if (TextUtils.isEmpty(phone)) {
             showToast("号码不能为空!");
             return;
@@ -83,6 +89,11 @@ public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBind
             showToast("验证码不能为空!");
             return;
         }
+        if (!selected) {
+            showToast("请接受协议!");
+            return;
+        }
+
         Api.getApi().login(phone, code)
                 .compose(callbackOnIOToMainThread())
                 .subscribe(new BaseNetListener<LoginModel>(this, true) {
@@ -105,7 +116,7 @@ public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBind
     private void getUserInfo() {
         Api.getApi().getUserInfo()
                 .compose(callbackOnIOToMainThread())
-                .subscribe(new BaseNetListener<UserInfoModel>(this, false) {
+                .subscribe(new BaseNetListener<UserInfoModel>(this, true) {
                     @Override
                     public void onSuccess(UserInfoModel userInfoModel) {
                         MyApplication.getInstance().setUserInfo(userInfoModel);

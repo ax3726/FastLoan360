@@ -7,7 +7,9 @@ import android.view.View;
 import com.lm.lib_common.base.BaseActivity;
 import com.lm.lib_common.base.BasePresenter;
 import com.xjd.a360fastloan.R;
+import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivityCreditAssessBinding;
+import com.xjd.a360fastloan.model.main.UserInfoModel;
 
 
 public class CreditAssessActivity extends BaseActivity<BasePresenter, ActivityCreditAssessBinding> {
@@ -56,6 +58,9 @@ public class CreditAssessActivity extends BaseActivity<BasePresenter, ActivityCr
         int result = Min + (int) (Math.random() * ((Max - Min) + 1));
 
         mBinding.tvNum.setText(String.valueOf(result));
-
+        UserInfoModel userInfo = MyApplication.getInstance().getUserInfo();
+        if (userInfo != null && userInfo.getProduct() != null) {
+            mBinding.tvPrice.setText("服务费：" + userInfo.getProduct().getPrice() + "借币");
+        }
     }
 }

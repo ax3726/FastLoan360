@@ -479,6 +479,7 @@
                 </com.zhy.autolayout.AutoRelativeLayout>
 
                 <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/lly_check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -488,9 +489,10 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/img_check"
                         android:layout_width="30px"
                         android:layout_height="30px"
-                        android:src="@mipmap/login_check" />
+                        android:src="@drawable/selector_check" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -526,9 +528,10 @@
                 android:layout_weight="1"
                 android:background="@color/colorWhite"
                 android:gravity="center"
-                android:text="服务费：198借币"
+                android:text="服务费：0借币"
                 android:textColor="@color/color666666"
                 android:textSize="32px" />
+
             <TextView
                 android:id="@+id/tv_loan"
                 android:layout_width="0dp"

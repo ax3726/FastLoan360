@@ -2,38 +2,43 @@ package com.xjd.a360fastloan.model.home;
 
 public class ProductListModel {
 
+
     /**
-     * id : 1
-     * name : 360极速借
-     * icon : /storage/files/PtnGH2bPS3Y4r3uPcccwRXBPNDByFTkKnM9tU8bl.png
+     * id : 2
+     * name : 快贷网
+     * icon : files/Ovfa82v8Z0ni7aXBxp4Hn4FIFIzDuClqmAUI8XyN.png
      * min : 1000
-     * max : 15000
-     * rebate : 0.60
+     * max : 30000
+     * rebate : 1.00
      * cycle : 90天
-     * price : 198.00
+     * price : 9.00
      * v_click : 500万
-     * url : null
-     * created_at : 2019-06-20 13:19:26
-     * updated_at : 2019-06-20 13:19:26
+     * url : https://pan.baidu.com/play/video#/video?path=%2Fxfx.mkv&t=-1
+     * created_at : 2019-07-15 20:29:53
+     * updated_at : 2019-07-15 20:36:53
      * deleted_at : null
-     * iconsrc : http://cash.local/storage/files/PtnGH2bPS3Y4r3uPcccwRXBPNDByFTkKnM9tU8bl.png
+     * iconsrc : http://cash.free.idcfengye.com/storage/files/Ovfa82v8Z0ni7aXBxp4Hn4FIFIzDuClqmAUI8XyN.png
      */
-
-    private boolean is_select = false;
-
-    private int    id;
+//<<<<<<< HEAD
+//
+//    private boolean is_select = false;
+//
+//    private int    id;
+//=======
+    private boolean is_select;
+    private int id;
     private String name;
     private String icon;
-    private int    min;
-    private int    max;
+    private int min;
+    private int max;
     private String rebate;
     private String cycle;
-    private double price;
+    private String price;
     private String v_click;
     private String url;
     private String created_at;
     private String updated_at;
-    private String deleted_at;
+    private Object deleted_at;
     private String iconsrc;
 
     public boolean isIs_select() {
@@ -100,11 +105,11 @@ public class ProductListModel {
         this.cycle = cycle;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -140,11 +145,11 @@ public class ProductListModel {
         this.updated_at = updated_at;
     }
 
-    public String getDeleted_at() {
+    public Object getDeleted_at() {
         return deleted_at;
     }
 
-    public void setDeleted_at(String deleted_at) {
+    public void setDeleted_at(Object deleted_at) {
         this.deleted_at = deleted_at;
     }
 
