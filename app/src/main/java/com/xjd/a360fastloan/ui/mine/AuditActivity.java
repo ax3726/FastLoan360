@@ -1,5 +1,6 @@
 package com.xjd.a360fastloan.ui.mine;
 
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.lm.lib_common.base.BaseActivity;
 import com.lm.lib_common.base.BasePresenter;
 import com.xjd.a360fastloan.R;
+import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivityAuditBinding;
 import com.xjd.a360fastloan.databinding.ActivityOrderBinding;
 
@@ -52,6 +54,14 @@ public class AuditActivity extends BaseActivity<BasePresenter,ActivityAuditBindi
     protected void initData() {
         super.initData();
 
+
+
+        mBinding.tv01.setText(MyApplication.getInstance().getUserInfo().getProduct().getName().toString());
+        mBinding.tv02.setText("额度"+MyApplication.getInstance().getUserInfo().getProduct().getMax()+"元");
+        mBinding.tv04.setText("周期"+MyApplication.getInstance().getUserInfo().getProduct().getCycle());
+        mBinding.tv03.setText("¥  "+MyApplication.getInstance().getUserInfo().getProduct().getPrice());
+
+        mBinding.image01.setImageURI(Uri.parse(MyApplication.getInstance().getUserInfo().getProduct().getIconsrc()));
 
         mydata = new ArrayList<Map<String, Object>>();
         Map<String, Object> hashMap = new HashMap<String, Object>();

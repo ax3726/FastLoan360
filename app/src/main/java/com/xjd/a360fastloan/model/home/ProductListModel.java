@@ -19,7 +19,6 @@ public class ProductListModel {
      * iconsrc : http://cash.local/storage/files/PtnGH2bPS3Y4r3uPcccwRXBPNDByFTkKnM9tU8bl.png
      */
 
-    [{"id":2,"name":"\u5feb\u8d37\u7f51","icon":"files\/Ovfa82v8Z0ni7aXBxp4Hn4FIFIzDuClqmAUI8XyN.png","min":1000,"max":30000,"rebate":"1.00","cycle":"90\u5929","price":"9.00","v_click":"500\u4e07","url":"https:\/\/pan.baidu.com\/play\/video#\/video?path=%2Fxfx.mkv&t=-1","created_at":"2019-07-15 20:29:53","updated_at":"2019-07-15 20:36:53","deleted_at":null,"iconsrc":"http:\/\/cash.free.idcfengye.comfiles\/Ovfa82v8Z0ni7aXBxp4Hn4FIFIzDuClqmAUI8XyN.png"}]
     private boolean is_select = false;
 
     private int    id;
