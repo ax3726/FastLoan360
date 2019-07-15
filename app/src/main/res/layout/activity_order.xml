@@ -51,7 +51,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@id/tv_02"
+                    android:id="@+id/tv_02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_01"
@@ -64,20 +64,20 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@id/tv_03"
+                   android:id="@+id/tv_03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_02"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
                     android:layout_toRightOf="@id/view_line"
-                    android:text="¥ 168"
+                    android:text=""
                     android:textColor="#ff2c59"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@id/tv_04"
+                   android:id="@+id/tv_04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_01"

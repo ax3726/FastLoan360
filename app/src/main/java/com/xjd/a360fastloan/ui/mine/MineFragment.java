@@ -2,11 +2,13 @@ package com.xjd.a360fastloan.ui.mine;
 
 import android.view.View;
 
+import com.bumptech.glide.Glide;
 import com.lm.lib_common.base.BaseFragment;
 import com.lm.lib_common.base.BaseFragmentPresenter;
 import com.lm.lib_common.utils.dialog.MyItemDialogListener;
 import com.lm.lib_common.utils.dialog.StytledDialog;
 import com.xjd.a360fastloan.R;
+import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.FragmentMineBinding;
 import com.xjd.a360fastloan.ui.mian.LoginActivity;
 
@@ -32,29 +34,24 @@ public class MineFragment extends BaseFragment<BaseFragmentPresenter, FragmentMi
     @Override
     protected void initData() {
         super.initData();
-        mBinding.name.setOnClickListener(new View.OnClickListener() {
+
+        String maskNumber = MyApplication.getInstance().getUserInfo().getMobile().toString().substring(0,3)+"****"+MyApplication.getInstance().getUserInfo().getMobile().toString().substring(7,MyApplication.getInstance().getUserInfo().getMobile().toString().length());
+        mBinding.tvLogin.setText(maskNumber);
+        mBinding.tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final List<String> strings = new ArrayList<>();
-                strings.add("拍照");
-                strings.add("从相册选择");
-                StytledDialog.showBottomItemDialog(getActivity(), strings, "安全退出", true, true, new MyItemDialogListener() {
+                strings.add("");
+                StytledDialog.showBottomItemDialog2(getActivity(), "安全退出", true, true, new MyItemDialogListener() {
                     @Override
                     public void onItemClick(String text, int position) {
-                        showToast(text + position);
-                        switch (position) {
-                            case 0:
-//                                doPhoto();
-                                break;
-                            case 1:
-//                                pickphoto();
-                                break;
-                        }
+
                     }
 
                     @Override
                     public void onBottomBtnClick() {
-                        showToast("onItemClick");
+                        startActivity(LoginActivity.class);
+                        aty.finish();
                     }
                 });
             }
@@ -91,12 +88,12 @@ public class MineFragment extends BaseFragment<BaseFragmentPresenter, FragmentMi
                 startActivity(AboutActivity.class);
             }
         });
-        mBinding.tvLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(LoginActivity.class);
-            }
-        });
+//        mBinding.tvLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(LoginActivity.class);
+//            }
+//        });
     }
 
 

@@ -8,6 +8,7 @@ import com.xjd.a360fastloan.model.home.ProdectInfoModel;
 import com.xjd.a360fastloan.model.home.ProductListModel;
 import com.xjd.a360fastloan.model.main.LoginModel;
 import com.xjd.a360fastloan.model.main.UserInfoModel;
+import com.xjd.a360fastloan.model.mine.RechargesBean;
 
 import java.util.List;
 
@@ -88,5 +89,15 @@ public interface ApiService {
                                            @Query("date") String date,
                                            @Query("code") String code
     );
+
+    //充值
+    @POST("api/recharges")
+    Flowable<RechargesBean> getRecharges(@Query("amount") String amount);
+
+
+    //反馈
+    @POST("api/feedback")
+    Flowable<String> getFeedback(@Query("content") String content,@Query("contact") String contact);
+
 
 }

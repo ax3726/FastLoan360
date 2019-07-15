@@ -221,6 +221,54 @@ public class StytledDialog {
         return dialog;
     }
 
+    public static Dialog showBottomItemDialog2(Context context,
+                                              String bottomTxt,
+                                              boolean outsideCancleable, boolean cancleable,
+                                              final MyItemDialogListener listener){
+        Dialog dialog = buildDialog(context,cancleable,outsideCancleable);
+
+        int measuredHeight =   assignBottomListDialogView2(context,dialog,bottomTxt,listener);
+
+        Window window = dialog.getWindow();
+        window.setGravity(Gravity.BOTTOM);
+        window.setWindowAnimations(R.style.mystyle);
+
+
+        setDialogStyle(context,dialog,measuredHeight);
+
+        dialog.show();
+        return dialog;
+    }
+
+    private static int assignBottomListDialogView2(final Context context,  final Dialog dialog,
+                                                   String bottomTxt, final MyItemDialogListener listener) {
+        View root = View.inflate(context,R.layout.dialog_ios_alert_bottom,null);
+        Button btnBottom = (Button) root.findViewById(R.id.btn_bottom);
+        if (TextUtils.isEmpty(bottomTxt)){
+            btnBottom.setVisibility(View.GONE);
+        }else {
+            btnBottom.setVisibility(View.VISIBLE);
+            btnBottom.setText(bottomTxt);
+            btnBottom.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onBottomBtnClick();
+                    if (dialog != null && dialog.isShowing()){
+                        dialog.dismiss();
+                    }
+                }
+            });
+        }
+
+
+        dialog.setContentView(root);
+
+        int height =    0;
+
+        return height;
+    }
+
+
     private static int assignBottomListDialogView(final Context context,  final Dialog dialog,
                                                    final List<String> words, String bottomTxt, final MyItemDialogListener listener) {
         View root = View.inflate(context,R.layout.dialog_ios_alert_bottom,null);

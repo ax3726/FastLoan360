@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorF0F3FF"
+        android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="195px"
+                android:src="@drawable/icon_tuikuan" />
+
+            <TextView
+                android:padding="20px"
+                android:lineSpacingExtra="15px"
+                android:layout_marginTop="50px"
+                android:text="           您好，您的退款申请我们已经收到，给您带来的不 便我们深感歉意，我们将会在10-15个日内将退款金额 返还到您的钱包内，如您还有任何不满意的地方，可以 致电我们客服，电话：021-8888888。"
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</layout>

@@ -9,10 +9,17 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.lm.lib_common.base.BaseActivity;
+import com.lm.lib_common.base.BaseNetListener;
 import com.lm.lib_common.base.BasePresenter;
+import com.lm.lib_common.model.BaseBean;
 import com.lm.lib_common.utils.GridViewAdapter;
 import com.xjd.a360fastloan.R;
+import com.xjd.a360fastloan.common.Api;
+import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivityAccountBinding;
+import com.xjd.a360fastloan.model.main.UserInfoModel;
+import com.xjd.a360fastloan.model.mine.RechargesBean;
+import com.xjd.a360fastloan.ui.mian.MainActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,7 +32,7 @@ public class AccountActivity extends BaseActivity<BasePresenter,ActivityAccountB
 
     private ArrayList mList;
     private GridViewAdapter mAdapter;
-
+    private String money="";
     @Override
     protected int getLayoutId() {
         return R.layout.activity_account;
@@ -53,16 +60,19 @@ public class AccountActivity extends BaseActivity<BasePresenter,ActivityAccountB
         });
 
         mList = new ArrayList<>();
-      
+
+
+
+        mList.add("5");
         mList.add("10");
-        mList.add("10");
-        mList.add("10");
-        mList.add("10");
-        mList.add("10");
-        mList.add("10");
-        mList.add("10");
-        mList.add("10");
-        mList.add("10");
+        mList.add("20");
+        mList.add("50");
+        mList.add("100");
+        mList.add("200");
+        mList.add("500");
+        mList.add("800");
+        mList.add("1000");
+        mBinding.tvAccount.setText(MyApplication.getInstance().getUserInfo().getBalance());
         mAdapter = new GridViewAdapter(AccountActivity.this, mList);
         GridView gridView=(GridView) findViewById(R.id.gridView);
 
@@ -76,7 +86,33 @@ public class AccountActivity extends BaseActivity<BasePresenter,ActivityAccountB
                 mAdapter.changeState(position);
 
                 TextView textView = (TextView) view.findViewById(R.id.tv);
+                money=textView.getText().toString();
                 showToast(""+position);
+            }
+        });
+
+        mBinding.btnTurn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(money.length()>0)
+                {
+                    Api.getApi().getRecharges(money)
+                            .compose(callbackOnIOToMainThread())
+                            .subscribe(new BaseNetListener<RechargesBean>(AccountActivity.this, false) {
+                                @Override
+                                public void onSuccess(RechargesBean userInfoModel) {
+
+                                }
+
+                                @Override
+                                public void onFail(String errMsg) {
+
+                                }
+                            });
+                }else
+                    {
+                        showToast("请选择充值余额");
+                    }
             }
         });
 

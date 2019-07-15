@@ -16,9 +16,13 @@ import android.widget.TextView;
 import com.lm.lib_common.adapters.recyclerview.CommonAdapter;
 import com.lm.lib_common.adapters.recyclerview.base.ViewHolder;
 import com.lm.lib_common.base.BaseActivity;
+import com.lm.lib_common.base.BaseNetListener;
 import com.lm.lib_common.base.BasePresenter;
 import com.xjd.a360fastloan.R;
+import com.xjd.a360fastloan.common.Api;
+import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivityOrderBinding;
+import com.xjd.a360fastloan.model.home.ProductListModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,8 +30,8 @@ import java.util.List;
 import java.util.Map;
 
 public class OrderActivity extends BaseActivity<BasePresenter, ActivityOrderBinding> {
-    private List<String>          mDataList = new ArrayList<>();
-    private CommonAdapter<String> mAdapter;
+    private List<ProductListModel>          mDataList = new ArrayList<>();
+    private CommonAdapter<ProductListModel> mAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -55,23 +59,27 @@ public class OrderActivity extends BaseActivity<BasePresenter, ActivityOrderBind
     protected void initData() {
         super.initData();
 
-        mDataList.add("");
-        mDataList.add("");
-        mDataList.add("");
-        mDataList.add("");
-        mDataList.add("");
-        mDataList.add("");
-        mDataList.add("");
-        mDataList.add("");
-        mDataList.add("");
-        mDataList.add("");
-        mDataList.add("");
-        mAdapter = new CommonAdapter<String>(aty, R.layout.selectorderlistviewlay, mDataList) {
+        mBinding.tv01.setText(MyApplication.getInstance().getUserInfo().getProduct().getName().toString());
+        mBinding.tv02.setText("额度"+MyApplication.getInstance().getUserInfo().getProduct().getMax()+"元");
+        mBinding.tv04.setText("周期"+MyApplication.getInstance().getUserInfo().getProduct().getCycle());
+        mBinding.tv03.setText("¥  "+MyApplication.getInstance().getUserInfo().getProduct().getPrice());
+
+        getProducts();
+        mAdapter = new CommonAdapter<ProductListModel>(aty, R.layout.selectorderlistviewlay, mDataList) {
             @Override
-            protected void convert(ViewHolder holder, String s, int position) {
+            protected void convert(ViewHolder holder, ProductListModel productListModel, int position) {
+                 holder.setText(R.id.tv_01,mDataList.get(position).getName())
+                 .setImageurl(R.id.image_01,mDataList.get(position).getIconsrc(),0)
+                         .setText(R.id.tv_02,mDataList.get(position).getMin()+"-"+mDataList.get(position).getMax()+"元");
 
-
+               holder.getView(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       startActivity(DrawbackActivity.class);
+                   }
+               });
             }
+
         };
         mBinding.rcBody.setLayoutManager(new LinearLayoutManager(aty));
         mBinding.rcBody.setNestedScrollingEnabled(false);
@@ -85,5 +93,26 @@ public class OrderActivity extends BaseActivity<BasePresenter, ActivityOrderBind
         });
     }
 
+
+    private void getProducts() {
+        Api.getApi().getProducts()
+                .compose(callbackOnIOToMainThread())
+                .subscribe(new BaseNetListener<List<ProductListModel>>(this, true) {
+                    @Override
+                    public void onSuccess(List<ProductListModel> list) {
+                        mDataList.clear();
+                        if (list != null && list.size() > 0) {
+                            mDataList.addAll(list);
+                        }
+                        mAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onFail(String errMsg) {
+
+                    }
+                });
+
+    }
 
 }
