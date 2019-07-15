@@ -10,9 +10,7 @@ import com.xjd.a360fastloan.R;
 import com.xjd.a360fastloan.databinding.ActivityCreditAssessBinding;
 
 
-
 public class CreditAssessActivity extends BaseActivity<BasePresenter, ActivityCreditAssessBinding> {
-
 
 
     @Override
@@ -48,4 +46,16 @@ public class CreditAssessActivity extends BaseActivity<BasePresenter, ActivityCr
         });
     }
 
+    @Override
+    protected void initData() {
+        super.initData();
+        int Min = 760;
+
+        int Max = 800;
+
+        int result = Min + (int) (Math.random() * ((Max - Min) + 1));
+
+        mBinding.tvNum.setText(String.valueOf(result));
+
+    }
 }

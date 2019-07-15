@@ -15,6 +15,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.xjd.a360fastloan.R;
+import com.xjd.a360fastloan.model.main.UserInfoModel;
 
 
 /**
@@ -26,6 +27,15 @@ public class MyApplication extends ThisApplication {
     public static String Base_Path = "";
     private String token_type="";
     private String access_token="";
+    private UserInfoModel userInfo;
+
+    public UserInfoModel getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfoModel userInfo) {
+        this.userInfo = userInfo;
+    }
 
     public String getToken_type() {
         return token_type;

@@ -1,8 +1,10 @@
 package com.xjd.a360fastloan.ui.mian;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.lm.lib_common.base.BaseActivity;
 import com.lm.lib_common.base.BaseNetListener;
 import com.lm.lib_common.base.BasePresenter;
@@ -13,6 +15,7 @@ import com.xjd.a360fastloan.common.Constant;
 import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivityLoginBinding;
 import com.xjd.a360fastloan.model.main.LoginModel;
+import com.xjd.a360fastloan.model.main.UserInfoModel;
 
 public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBinding> {
 
@@ -37,7 +40,7 @@ public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBind
         mBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login();
+                 login();
             }
         });
         mBinding.tvCode.setOnClickListener(new View.OnClickListener() {
@@ -52,11 +55,11 @@ public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBind
             }
         });
     }
-    private void getCode(String phone)
-    {
+
+    private void getCode(String phone) {
         Api.getApi().getCode(phone)
                 .compose(callbackOnIOToMainThread())
-                .subscribe(new BaseNetListener<String>(this,true) {
+                .subscribe(new BaseNetListener<String>(this, true) {
                     @Override
                     public void onSuccess(String s) {
                         showToast("发送成功!");
@@ -64,14 +67,13 @@ public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBind
 
                     @Override
                     public void onFail(String errMsg) {
-                        showToast("哈哈"+errMsg);
                     }
                 });
     }
-    private void login()
-    {
+
+    private void login() {
         String phone = mBinding.etPhone.getText().toString();
-        String code = mBinding.etCode.getText().toString();
+        String code  = mBinding.etCode.getText().toString();
         if (TextUtils.isEmpty(phone)) {
             showToast("号码不能为空!");
             return;
@@ -81,15 +83,32 @@ public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBind
             showToast("验证码不能为空!");
             return;
         }
-        Api.getApi().login(phone,code)
+        Api.getApi().login(phone, code)
                 .compose(callbackOnIOToMainThread())
-                .subscribe(new BaseNetListener<LoginModel>(this,true) {
+                .subscribe(new BaseNetListener<LoginModel>(this, true) {
                     @Override
                     public void onSuccess(LoginModel model) {
-                        SharedPreferencesUtils.setParam(aty,Constant.TOKEN_TYPE,model.getToken_type());
-                        SharedPreferencesUtils.setParam(aty,Constant.ACCESS_TOKEN,model.getAccess_token());
+                        SharedPreferencesUtils.setParam(aty, Constant.TOKEN_TYPE, model.getToken_type());
+                        SharedPreferencesUtils.setParam(aty, Constant.ACCESS_TOKEN, model.getAccess_token());
                         MyApplication.getInstance().setToken_type(model.getToken_type());
                         MyApplication.getInstance().setAccess_token(model.getAccess_token());
+                        getUserInfo();
+                    }
+
+                    @Override
+                    public void onFail(String errMsg) {
+
+                    }
+                });
+    }
+
+    private void getUserInfo() {
+        Api.getApi().getUserInfo()
+                .compose(callbackOnIOToMainThread())
+                .subscribe(new BaseNetListener<UserInfoModel>(this, false) {
+                    @Override
+                    public void onSuccess(UserInfoModel userInfoModel) {
+                        MyApplication.getInstance().setUserInfo(userInfoModel);
                         startActivity(MainActivity.class);
                         finish();
                     }
@@ -100,4 +119,5 @@ public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBind
                     }
                 });
     }
+
 }

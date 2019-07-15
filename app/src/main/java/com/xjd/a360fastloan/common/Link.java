@@ -5,5 +5,5 @@ package com.xjd.a360fastloan.common;
  */
 
 public class Link {
-    public static final String SEREVE = "https://ca233391.ngrok.io/";
+    public static final String SEREVE = "https://2cfcf5fe.ngrok.io/";
 }

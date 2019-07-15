@@ -28,7 +28,7 @@ public class HomeFragment extends BaseFragment<BaseFragmentPresenter, FragmentHo
     @Override
     protected void initData() {
         super.initData();
-        getUserInfo();
+
     }
 
     @Override
@@ -56,19 +56,5 @@ public class HomeFragment extends BaseFragment<BaseFragmentPresenter, FragmentHo
 
     }
 
-    private void getUserInfo() {
-        Api.getApi().getUserInfo()
-                .compose(callbackOnIOToMainThread())
-                .subscribe(new BaseNetListener<String>(this, true) {
-                    @Override
-                    public void onSuccess(String s) {
 
-                    }
-
-                    @Override
-                    public void onFail(String errMsg) {
-
-                    }
-                });
-    }
 }

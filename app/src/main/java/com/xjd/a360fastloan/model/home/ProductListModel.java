@@ -18,12 +18,13 @@ public class ProductListModel {
      * deleted_at : null
      * iconsrc : http://cash.local/storage/files/PtnGH2bPS3Y4r3uPcccwRXBPNDByFTkKnM9tU8bl.png
      */
+    private boolean is_select = false;
 
-    private int id;
+    private int    id;
     private String name;
     private String icon;
-    private int min;
-    private int max;
+    private int    min;
+    private int    max;
     private String rebate;
     private String cycle;
     private double price;
@@ -33,6 +34,14 @@ public class ProductListModel {
     private String updated_at;
     private String deleted_at;
     private String iconsrc;
+
+    public boolean isIs_select() {
+        return is_select;
+    }
+
+    public void setIs_select(boolean is_select) {
+        this.is_select = is_select;
+    }
 
     public int getId() {
         return id;

@@ -3,12 +3,15 @@ package com.xjd.a360fastloan.ui.mian;
 import android.text.TextUtils;
 
 import com.lm.lib_common.base.BaseActivity;
+import com.lm.lib_common.base.BaseNetListener;
 import com.lm.lib_common.base.BasePresenter;
 import com.lm.lib_common.utils.SharedPreferencesUtils;
 import com.xjd.a360fastloan.R;
+import com.xjd.a360fastloan.common.Api;
 import com.xjd.a360fastloan.common.Constant;
 import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivitySplashBinding;
+import com.xjd.a360fastloan.model.main.UserInfoModel;
 
 public class SplashActivity extends BaseActivity<BasePresenter, ActivitySplashBinding> {
     @Override
@@ -29,17 +32,37 @@ public class SplashActivity extends BaseActivity<BasePresenter, ActivitySplashBi
     @Override
     protected void initData() {
         super.initData();
-        String token_type = (String) SharedPreferencesUtils.getParam(aty, Constant.TOKEN_TYPE, "");
+        String token_type   = (String) SharedPreferencesUtils.getParam(aty, Constant.TOKEN_TYPE, "");
         String access_token = (String) SharedPreferencesUtils.getParam(aty, Constant.ACCESS_TOKEN, "");
         if (!TextUtils.isEmpty(token_type) && !TextUtils.isEmpty(access_token)) {
             MyApplication.getInstance().setToken_type(token_type);
             MyApplication.getInstance().setAccess_token(access_token);
-            toMain();
+
+            getUserInfo();
+
         } else {
             toLogin();
         }
 
     }
+
+    private void getUserInfo() {
+        Api.getApi().getUserInfo()
+                .compose(callbackOnIOToMainThread())
+                .subscribe(new BaseNetListener<UserInfoModel>(this, false) {
+                    @Override
+                    public void onSuccess(UserInfoModel userInfoModel) {
+                        MyApplication.getInstance().setUserInfo(userInfoModel);
+                        toMain();
+                    }
+
+                    @Override
+                    public void onFail(String errMsg) {
+
+                    }
+                });
+    }
+
     /**
      * 跳转登录
      */
@@ -60,6 +83,7 @@ public class SplashActivity extends BaseActivity<BasePresenter, ActivitySplashBi
             }
         }.start();
     }
+
     /**
      * 跳转主页面
      */
@@ -69,7 +93,7 @@ public class SplashActivity extends BaseActivity<BasePresenter, ActivitySplashBi
             public void run() {
                 super.run();
                 try {
-                    sleep(1500);
+                    sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

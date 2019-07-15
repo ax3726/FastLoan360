@@ -7,6 +7,7 @@ import com.xjd.a360fastloan.model.home.IdCardModel;
 import com.xjd.a360fastloan.model.home.ProdectInfoModel;
 import com.xjd.a360fastloan.model.home.ProductListModel;
 import com.xjd.a360fastloan.model.main.LoginModel;
+import com.xjd.a360fastloan.model.main.UserInfoModel;
 
 import java.util.List;
 
@@ -71,7 +72,7 @@ public interface ApiService {
 
     //获取当前用户信息
     @GET("api/users")
-    Flowable<String> getUserInfo();
+    Flowable<UserInfoModel> getUserInfo();
 
     //添加个人信息
     @GET("api/users/info")

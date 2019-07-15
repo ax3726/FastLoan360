@@ -22,7 +22,7 @@ import java.util.List;
 public class SmartRecommendActivity extends BaseActivity<BasePresenter, ActivitySmartRecommendBinding> {
 
 
-    private List<ProductListModel> mDataList = new ArrayList<>();
+    private List<ProductListModel>          mDataList = new ArrayList<>();
     private CommonAdapter<ProductListModel> mAdapter;
 
     @Override
@@ -47,8 +47,17 @@ public class SmartRecommendActivity extends BaseActivity<BasePresenter, Activity
         mBinding.tvLoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mDataList.size() > 0) {
-                    startActivity(new Intent(aty, ProductInfoActivity.class).putExtra("id", mDataList.get(0).getId()));
+                ProductListModel choose = null;
+                for (ProductListModel item : mDataList) {
+                    if (item.isIs_select()) {
+                        choose = item;
+                        break;
+                    }
+                }
+                if (choose != null) {
+                    startActivity(new Intent(aty, ProductInfoActivity.class).putExtra("id", choose.getId()));
+                } else {
+                    showToast("请选择产品！");
                 }
 
 
@@ -90,7 +99,19 @@ public class SmartRecommendActivity extends BaseActivity<BasePresenter, Activity
                         .setImageurl(R.id.img, item.getIconsrc(), 0)
                         .setText(R.id.tv_money_count, item.getMax() + "元")
                         .setText(R.id.tv_money, "￥" + item.getPrice())
-                        .setText(R.id.tv_money_old, "￥" + (item.getPrice() + 100));
+                        .setText(R.id.tv_money_old, "￥" + (item.getPrice() + 100))
+                        .setSelect(R.id.img_select, item.isIs_select())
+                        .setOnClickListener(R.id.rly_item, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                for (ProductListModel item : mDataList) {
+                                    item.setIs_select(false);
+                                }
+                                mDataList.get(position).setIs_select(true);
+                                notifyDataSetChanged();
+                            }
+                        })
+                ;
                 TextView tv_money_old = holder.getView(R.id.tv_money_old);
                 tv_money_old.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             }
@@ -98,6 +119,5 @@ public class SmartRecommendActivity extends BaseActivity<BasePresenter, Activity
         mBinding.rcBody.setLayoutManager(new LinearLayoutManager(aty));
         mBinding.rcBody.setNestedScrollingEnabled(false);
         mBinding.rcBody.setAdapter(mAdapter);
-
     }
 }

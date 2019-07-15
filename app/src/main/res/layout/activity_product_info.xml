@@ -126,7 +126,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_hint1"
-                        android:text="98"
+                        android:text="0"
                         android:textColor="@color/colorWhite"
                         android:textSize="100px" />
 
@@ -158,7 +158,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_hint3"
 
-                        android:text="15000"
+                        android:text="0"
                         android:textColor="@color/colorWhite"
                         android:textSize="60px" />
 
@@ -200,7 +200,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_hint5"
                         android:layout_alignLeft="@+id/tv_hint5"
-                        android:text="15"
+                        android:text="0"
                         android:textColor="@color/colorWhite"
                         android:textSize="60px" />
 
@@ -211,7 +211,7 @@
                         android:layout_alignBaseline="@+id/tv_day"
                         android:layout_marginLeft="10px"
                         android:layout_toRightOf="@+id/tv_day"
-                        android:text="元"
+                        android:text="天"
                         android:textColor="@color/colorWhite"
                         android:textSize="30px" />
 
@@ -249,7 +249,6 @@
                     android:layout_marginTop="15px"
                     android:layout_marginRight="41px"
                     android:lineSpacingExtra="20px"
-                    android:text="举例：借款15000元，期限为15天，6个月之后一次性自 动扣款或手动扣款 最快一天放款 日利率：0.01% 还款方式：1.银行代扣；2.主动还款 服务费：138元"
                     android:textColor="@color/color666666"
                     android:textSize="26px" />
 
@@ -262,7 +261,6 @@
                     android:layout_marginTop="15px"
                     android:layout_marginRight="41px"
                     android:lineSpacingExtra="20px"
-                    android:text="借款之前扣除服务费198元"
                     android:textColor="@color/color333333"
                     android:textSize="26px"
                     android:textStyle="bold" />
