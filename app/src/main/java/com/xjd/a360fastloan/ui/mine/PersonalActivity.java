@@ -13,8 +13,7 @@ import com.xjd.a360fastloan.model.main.UserInfoModel;
 import com.xjd.a360fastloan.ui.home.AddContactInfoActivity;
 import com.xjd.a360fastloan.ui.home.AddIdCardActivity;
 
-public class PersonalActivity extends BaseActivity<BasePresenter,ActivityPersonalBinding> {
-
+public class PersonalActivity extends BaseActivity<BasePresenter, ActivityPersonalBinding> {
 
 
     @Override
@@ -45,19 +44,42 @@ public class PersonalActivity extends BaseActivity<BasePresenter,ActivityPersona
         mBinding.tvJiben.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(AddIdCardActivity.class);
+                if (mBinding.tvJiben.isSelected()) {
+                    startActivity(AddIdCardActivity.class);
+                } else {
+                    startActivity(BaiseInformationActivity.class);
+                }
+
+            }
+        });
+        mBinding.tvGongzuo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mBinding.tvGongzuo.isSelected()) {
+                    startActivity(AddJobActivity.class);
+                } else {
+                    startActivity(JobActivity.class);
+                }
             }
         });
         mBinding.tvLianxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(AddContactInfoActivity.class);
+                if (mBinding.tvLianxi.isSelected()) {
+                    startActivity(AddContactInfoActivity.class);
+                } else {
+                    startActivity(LinkmanActivity.class);
+                }
             }
         });
         mBinding.tvBankcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(AddBankCardActivity.class);
+                if (mBinding.tvJiben.isSelected()) {
+
+                } else {//英航卡列表
+                    startActivity(AddBankCardActivity.class);
+                }
             }
         });
     }
@@ -75,6 +97,18 @@ public class PersonalActivity extends BaseActivity<BasePresenter,ActivityPersona
                     @Override
                     public void onSuccess(UserInfoModel userInfoModel) {
                         MyApplication.getInstance().setUserInfo(userInfoModel);
+
+                        mBinding.tvJiben.setText(userInfoModel.getInfo() != null ? "已认证" : "未认证");
+                        mBinding.tvJiben.setSelected(userInfoModel.getInfo() == null);
+
+                        mBinding.tvGongzuo.setText(userInfoModel.getJob() != null ? "已完成" : "未完成");
+                        mBinding.tvGongzuo.setSelected(userInfoModel.getJob() == null);
+
+                        mBinding.tvLianxi.setText(userInfoModel.getRelation() != null ? "已完成" : "未完成");
+                        mBinding.tvLianxi.setSelected(userInfoModel.getRelation() == null);
+
+                        mBinding.tvBankcard.setText(userInfoModel.getCard() != null ? "已完成" : "未完成");
+                        mBinding.tvBankcard.setSelected(userInfoModel.getCard() == null);
 
                     }
 

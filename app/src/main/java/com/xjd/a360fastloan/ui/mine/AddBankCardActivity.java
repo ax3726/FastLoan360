@@ -1,8 +1,6 @@
 package com.xjd.a360fastloan.ui.mine;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -15,6 +13,7 @@ import com.xjd.a360fastloan.common.Link;
 import com.xjd.a360fastloan.databinding.ActivityAddBankCardBinding;
 import com.xjd.a360fastloan.model.home.BankModel;
 import com.xjd.a360fastloan.ui.common.WebViewActivity;
+import com.xjd.a360fastloan.widget.SoftKeyBoardListener;
 
 public class AddBankCardActivity extends BaseActivity<BasePresenter, ActivityAddBankCardBinding> {
 
@@ -64,10 +63,22 @@ public class AddBankCardActivity extends BaseActivity<BasePresenter, ActivityAdd
                 check();
             }
         });
+        SoftKeyBoardListener.setListener(aty, new SoftKeyBoardListener.OnSoftKeyBoardChangeListener() {
+            @Override
+            public void keyBoardShow(int height) {
+
+            }
+
+            @Override
+            public void keyBoardHide(int height) {
+                check();
+            }
+        });
+
     }
 
     private void check() {
-        String bank       = mBinding.etPhone.getText().toString().trim();
+        String bank = mBinding.etPhone.getText().toString().trim();
         String bank_phone = mBinding.etBankPhone.getText().toString().trim();
         if (TextUtils.isEmpty(bank)) {
             showToast("银行卡信息不能为空!");
@@ -103,11 +114,11 @@ public class AddBankCardActivity extends BaseActivity<BasePresenter, ActivityAdd
 
 
     private void addCard() {
-        boolean selected   = mBinding.imgCheck.isSelected();
-        String  bank       = mBinding.etPhone.getText().toString().trim();
-        String  bank_phone = mBinding.etBankPhone.getText().toString().trim();
-        String  bank_date  = mBinding.etBankDate.getText().toString().trim();
-        String  bank_bei   = mBinding.etBankBei.getText().toString().trim();
+        boolean selected = mBinding.imgCheck.isSelected();
+        String bank = mBinding.etPhone.getText().toString().trim();
+        String bank_phone = mBinding.etBankPhone.getText().toString().trim();
+        String bank_date = mBinding.etBankDate.getText().toString().trim();
+        String bank_bei = mBinding.etBankBei.getText().toString().trim();
         if (TextUtils.isEmpty(mCardType)) {
             showToast("银行卡信息不能为空!");
             return;

@@ -96,6 +96,7 @@ public interface ApiService {
                              @Query("type") String type,
                              @Query("code") String code,
                              @Query("date") String date);
+
     /**
      * 添加银行卡信息
      *
@@ -103,8 +104,8 @@ public interface ApiService {
      */
     @POST("api/pay")
     Flowable<String> pay(@Query("pay_type") String pay_type,
-                             @Query("pay_id") String pay_id,
-                             @Query("card_id") String card_id);
+                         @Query("pay_id") String pay_id,
+                         @Query("card_id") String card_id);
 
     //添加个人信息
     @POST("api/users/info")
@@ -128,7 +129,18 @@ public interface ApiService {
 
     //反馈
     @POST("api/feedback")
-    Flowable<String> getFeedback(@Query("content") String content,@Query("contact") String contact);
+    Flowable<String> getFeedback(@Query("content") String content, @Query("contact") String contact);
 
+    //关联关系
+    @POST("api/users/relation")
+    Flowable<String> addRelation(@Query("name") String name, @Query("mobile") String mobile, @Query("relation") String relation);
 
+    //工作信息
+    @POST("api/users/job")
+    Flowable<String> addJob(@Query("type") String type,
+                            @Query("name") String name,
+                            @Query("address") String address,
+                            @Query("phone") String phone,
+                            @Query("income") String income,
+                            @Query("intime") String intime);
 }
