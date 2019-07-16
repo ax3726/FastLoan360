@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="30px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="职业类型："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:background="@color/colorWhite"
+                android:gravity="right"
+                android:hint="请输入职业类型"
+                android:textColor="@color/color333333"
+                android:textSize="28px" />
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorLine" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="30px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="单位名称："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:background="@color/colorWhite"
+                android:gravity="right"
+                android:hint="请输入单位名称"
+                android:textColor="@color/color333333"
+                android:textSize="28px" />
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorLine" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="30px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="单位地址："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:background="@color/colorWhite"
+                android:gravity="right"
+                android:hint="请输入单位地址"
+                android:textColor="@color/color333333"
+                android:textSize="28px" />
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorLine" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="30px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="单位电话："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:background="@color/colorWhite"
+                android:gravity="right"
+                android:hint="请输入单位电话"
+                android:textColor="@color/color333333"
+                android:textSize="28px" />
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorLine" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="30px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="月收入："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_income"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:background="@color/colorWhite"
+                android:gravity="right"
+                android:hint="请输入月收入"
+                android:textColor="@color/color333333"
+                android:textSize="28px" />
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorLine" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="30px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="入职时间："
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vie_line_1"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="140px"
+                android:background="@color/colorWhite"
+                android:drawableRight="@mipmap/right_icon"
+                android:drawablePadding="15px"
+                android:gravity="right"
+                android:hint="请选择"
+                android:textColor="@color/color999999"
+                android:textSize="28px" />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorLine" />
+
+        <com.zhy.autolayout.AutoFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#F0F3FF">
+
+
+            <Button
+                android:id="@+id/btn_turn"
+                android:layout_width="match_parent"
+                android:layout_height="88px"
+                android:layout_marginLeft="44px"
+                android:layout_marginTop="40px"
+                android:layout_marginRight="44px"
+                android:background="@drawable/shape_btn_common"
+                android:text="提交"
+                android:textColor="@color/colorWhite"
+                android:textSize="32px" />
+
+
+        </com.zhy.autolayout.AutoFrameLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+</layout>
