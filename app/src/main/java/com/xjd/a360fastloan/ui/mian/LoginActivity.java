@@ -1,5 +1,6 @@
 package com.xjd.a360fastloan.ui.mian;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -10,10 +11,12 @@ import com.lm.lib_common.utils.SharedPreferencesUtils;
 import com.xjd.a360fastloan.R;
 import com.xjd.a360fastloan.common.Api;
 import com.xjd.a360fastloan.common.Constant;
+import com.xjd.a360fastloan.common.Link;
 import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivityLoginBinding;
 import com.xjd.a360fastloan.model.main.LoginModel;
 import com.xjd.a360fastloan.model.main.UserInfoModel;
+import com.xjd.a360fastloan.ui.common.WebViewActivity;
 
 public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBinding> {
 
@@ -56,6 +59,12 @@ public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBind
             @Override
             public void onClick(View view) {
                 mBinding.imgCheck.setSelected(!mBinding.imgCheck.isSelected());
+            }
+        });
+        mBinding.tvAgreement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(aty, WebViewActivity.class).putExtra("url", Link.AGREE_REGISTER));
             }
         });
     }

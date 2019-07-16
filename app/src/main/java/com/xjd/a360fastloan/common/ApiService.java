@@ -85,19 +85,31 @@ public interface ApiService {
     @GET("api/users")
     Flowable<UserInfoModel> getUserInfo();
 
+    /**
+     * 添加银行卡信息
+     *
+     * @return
+     */
+    @POST("api/users/card")
+    Flowable<String> addCard(@Query("number") String number,
+                             @Query("mobile") String mobile,
+                             @Query("type") String type,
+                             @Query("code") String code,
+                             @Query("date") String date);
+
     //添加个人信息
     @POST("api/users/info")
     Flowable<String> addUserInfo(@Query("name") String name,
-                                           @Query("sex") String sex,
-                                           @Query("id_card") String id_card,
-                                           @Query("address") String address,
-                                           @Query("education") String education,
-                                           @Query("marriage") String marriage,
-                                           @Query("number") String number,
-                                           @Query("mobile") String mobile,
-                                           @Query("type") String type,
-                                           @Query("date") String date,
-                                           @Query("code") String code
+                                 @Query("sex") String sex,
+                                 @Query("id_card") String id_card,
+                                 @Query("address") String address,
+                                 @Query("education") String education,
+                                 @Query("marriage") String marriage,
+                                 @Query("number") String number,
+                                 @Query("mobile") String mobile,
+                                 @Query("type") String type,
+                                 @Query("date") String date,
+                                 @Query("code") String code
     );
 
     //充值

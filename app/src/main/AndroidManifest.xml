@@ -20,6 +20,7 @@
         <activity android:name=".ui.home.AffirmBankActivity" />
         <activity android:name=".ui.home.AddContactInfoActivity" />
         <activity android:name=".ui.home.AddIdCardActivity" />
+        <activity android:name=".ui.common.WebViewActivity" />
 
         <meta-data
             android:name="android.max_aspect"
