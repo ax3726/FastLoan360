@@ -85,6 +85,7 @@ public class MineFragment extends BaseFragment<BaseFragmentPresenter, FragmentMi
         mBinding.tv06.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 startActivity(AboutActivity.class);
             }
         });

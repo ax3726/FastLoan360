@@ -14,9 +14,13 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.lm.lib_common.base.BaseActivity;
+import com.lm.lib_common.base.BaseNetListener;
 import com.lm.lib_common.base.BasePresenter;
 import com.xjd.a360fastloan.R;
+import com.xjd.a360fastloan.common.Api;
+import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivityBankcardBinding;
+import com.xjd.a360fastloan.model.main.UserInfoModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,26 +61,59 @@ public class BankcardActivity extends BaseActivity<BasePresenter, ActivityBankca
 
 
         mydata = new ArrayList<Map<String, Object>>();
-        Map<String, Object> hashMap = new HashMap<String, Object>();
-        hashMap.put("tv1", "中国工商银行");
-        hashMap.put("tv6", "5363");
-        hashMap.put("tv3", "储蓄卡");
-        mydata.add(hashMap);
-        Map<String, Object> hashMap2 = new HashMap<String, Object>();
-        hashMap2.put("tv1", "招商银行");
-        hashMap2.put("tv6", "6688");
-        hashMap2.put("tv3", "储蓄卡");
-        mydata.add(hashMap2);
+//        Map<String, Object> hashMap = new HashMap<String, Object>();
+//        hashMap.put("tv1", "中国工商银行");
+//        hashMap.put("tv6", "5363");
+//        hashMap.put("tv3", "储蓄卡");
+//        mydata.add(hashMap);
+//        Map<String, Object> hashMap2 = new HashMap<String, Object>();
+//        hashMap2.put("tv1", "招商银行");
+//        hashMap2.put("tv6", "6688");
+//        hashMap2.put("tv3", "储蓄卡");
+//        mydata.add(hashMap2);
+
+        if(MyApplication.getInstance().getUserInfo().getCard()!=null){
+            for (int i = 0; i < MyApplication.getInstance().getUserInfo().getCard().size(); i++) {
+                String maskNumber =MyApplication.getInstance().getUserInfo().getCard().get(i).getNumber().substring(MyApplication.getInstance().getUserInfo().getCard().get(i).getNumber().length()-4,MyApplication.getInstance().getUserInfo().getCard().get(i).getNumber().length());
+                Map<String, Object> hashMap = new HashMap<String, Object>();
+                hashMap.put("tv1", MyApplication.getInstance().getUserInfo().getCard().get(i).getName());
+                hashMap.put("tv6", maskNumber);
+                hashMap.put("img",MyApplication.getInstance().getUserInfo().getCard().get(i).getLogo());
+                hashMap.put("tv3", MyApplication.getInstance().getUserInfo().getCard().get(i).getType());
+                mydata.add(hashMap);
+            }
+        }
         myadapter = new Myadapter(mydata);
         mBinding.banklist.setAdapter(myadapter);
-       mBinding.add.setOnClickListener(new View.OnClickListener() {
+        mBinding.add.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
+
                startActivity(AddBankCardActivity.class);
            }
        });
 
     }
+
+//
+//    private void getUserInfo() {
+//        Api.getApi().getUserInfo()
+//                .compose(callbackOnIOToMainThread())
+//                .subscribe(new BaseNetListener<UserInfoModel>(this, true) {
+//                    @Override
+//                    public void onSuccess(UserInfoModel userInfoModel) {
+//                        MyApplication.getInstance().setUserInfo(userInfoModel);
+//                        mBinding.tvAccount.setText(userInfoModel.getBalance() + "");
+//                    }
+//
+//                    @Override
+//                    public void onFail(String errMsg) {
+//
+//                    }
+//                });
+//    }
+
+
 
 
     public class Myadapter extends BaseAdapter {
@@ -123,17 +160,9 @@ public class BankcardActivity extends BaseActivity<BasePresenter, ActivityBankca
 
 
             myholder.tv1.setText(data.get(position).get("tv1").toString());
-           switch (data.get(position).get("tv1").toString())
-           {
-               case "中国工商银行":
-                   myholder.img.setImageResource(R.drawable.gongshang);
-                   myholder.background_color.setBackgroundColor(Color.parseColor("#9987f8"));
-                   break;
-               case "招商银行":
-                   myholder.img.setImageResource(R.drawable.zhaoshang);
-                   myholder.background_color.setBackgroundColor(Color.parseColor("#FF4F79"));
-                   break;
-           }
+
+            myholder.background_color.setBackgroundColor(Color.parseColor("#9070F9"));
+            Glide.with(BankcardActivity.this).load(data.get(position).get("img").toString()).into(myholder.img);
 //            myholder.tv2.setText(data.get(position).get("tv2").toString());
             myholder.tv3.setText(data.get(position).get("tv3").toString());
 //            myholder.tv4.setText(data.get(position).get("tv4").toString());

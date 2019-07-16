@@ -55,7 +55,11 @@ public class OrderActivity extends BaseActivity<BasePresenter, ActivityOrderBind
         mBinding.tv02.setText("额度" + MyApplication.getInstance().getUserInfo().getProduct().getMax() + "元");
         mBinding.tv04.setText("周期" + MyApplication.getInstance().getUserInfo().getProduct().getCycle());
         mBinding.tv03.setText("¥  " + MyApplication.getInstance().getUserInfo().getProduct().getPrice());
+
+
+
         Glide.with(this).load(MyApplication.getInstance().getUserInfo().getProduct().getIconsrc()).into(mBinding.image01);
+        getOrders();
         getProducts();
         mAdapter = new CommonAdapter<ProductListModel>(aty, R.layout.selectorderlistviewlay, mDataList) {
             @Override
@@ -106,6 +110,27 @@ public class OrderActivity extends BaseActivity<BasePresenter, ActivityOrderBind
                             mDataList.addAll(list);
                         }
                         mAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onFail(String errMsg) {
+
+                    }
+                });
+
+    }
+
+    private void getOrders() {
+        Api.getApi().getOrders()
+                .compose(callbackOnIOToMainThread())
+                .subscribe(new BaseNetListener<List<ProductListModel>>(this, true) {
+                    @Override
+                    public void onSuccess(List<ProductListModel> list) {
+//                        mDataList.clear();
+//                        if (list != null && list.size() > 0) {
+//                            mDataList.addAll(list);
+//                        }
+//                        mAdapter.notifyDataSetChanged();
                     }
 
                     @Override

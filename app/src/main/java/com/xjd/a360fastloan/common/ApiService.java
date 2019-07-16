@@ -130,5 +130,8 @@ public interface ApiService {
     @POST("api/feedback")
     Flowable<String> getFeedback(@Query("content") String content,@Query("contact") String contact);
 
+    //产品列表
+    @GET("api/orders")
+    Flowable<List<ProductListModel>> getOrders();
 
 }

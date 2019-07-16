@@ -45,6 +45,7 @@ public class AccountActivity extends BaseActivity<BasePresenter, ActivityAccount
     @Override
     protected void initEvent() {
         super.initEvent();
+
         mBinding.tvAgreement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
