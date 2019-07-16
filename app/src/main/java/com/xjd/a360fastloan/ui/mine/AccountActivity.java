@@ -1,7 +1,6 @@
 package com.xjd.a360fastloan.ui.mine;
 
 import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -19,16 +18,14 @@ import com.xjd.a360fastloan.databinding.ActivityAccountBinding;
 import com.xjd.a360fastloan.model.main.UserInfoModel;
 import com.xjd.a360fastloan.model.mine.RechargesBean;
 import com.xjd.a360fastloan.ui.common.WebViewActivity;
+import com.xjd.a360fastloan.ui.home.OrderPayActivity;
 
 import java.util.ArrayList;
 
 public class AccountActivity extends BaseActivity<BasePresenter, ActivityAccountBinding> {
-
-
     private ArrayList mList;
     private GridViewAdapter mAdapter;
     private String money = "";
-    private String card_id = null;
 
     @Override
     protected int getLayoutId() {
@@ -68,17 +65,20 @@ public class AccountActivity extends BaseActivity<BasePresenter, ActivityAccount
                     showToast("请接受协议!");
                     return;
                 }
-                if (TextUtils.isEmpty(card_id)) {
-                    showToast("暂无银行卡!");
-                    return;
-                }
+
                 if (money.length() > 0) {
                     Api.getApi().getRecharges(money)
                             .compose(callbackOnIOToMainThread())
                             .subscribe(new BaseNetListener<RechargesBean>(AccountActivity.this, true) {
                                 @Override
                                 public void onSuccess(RechargesBean userInfoModel) {
-                                    pay(userInfoModel.getRecharge_id(), card_id);
+                                    startActivity(new Intent(aty, OrderPayActivity.class)
+                                            .putExtra("id", userInfoModel.getRecharge_id())
+                                            .putExtra("price", money)
+                                            .putExtra("is", true)
+                                    );
+                                    finish();
+
                                 }
 
                                 @Override
@@ -100,10 +100,7 @@ public class AccountActivity extends BaseActivity<BasePresenter, ActivityAccount
                     @Override
                     public void onSuccess(UserInfoModel userInfoModel) {
                         MyApplication.getInstance().setUserInfo(userInfoModel);
-                        if (userInfoModel.getCard() != null && userInfoModel.getCard().size() > 0) {
-                            card_id = userInfoModel.getCard().get(0).getId() + "";
-                        }
-
+                        mBinding.tvAccount.setText(userInfoModel.getBalance() + "");
                     }
 
                     @Override
@@ -113,23 +110,6 @@ public class AccountActivity extends BaseActivity<BasePresenter, ActivityAccount
                 });
     }
 
-    private void pay(String recharge_id, String card_id) {
-        Api.getApi().pay("recharges", recharge_id, card_id)
-                .compose(callbackOnIOToMainThread())
-                .subscribe(new BaseNetListener<String>(this, true) {
-                    @Override
-                    public void onSuccess(String s) {
-                        showToast("支付成功!");
-                        finish();
-                    }
-
-                    @Override
-                    public void onFail(String errMsg) {
-
-                    }
-                });
-
-    }
 
     @Override
     protected void initData() {

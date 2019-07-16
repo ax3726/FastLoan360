@@ -1,13 +1,15 @@
 package com.xjd.a360fastloan.ui.mine;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 
 import com.lm.lib_common.base.BaseActivity;
+import com.lm.lib_common.base.BaseNetListener;
 import com.lm.lib_common.base.BasePresenter;
 import com.xjd.a360fastloan.R;
+import com.xjd.a360fastloan.common.Api;
+import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivityPersonalBinding;
+import com.xjd.a360fastloan.model.main.UserInfoModel;
 import com.xjd.a360fastloan.ui.home.AddContactInfoActivity;
 import com.xjd.a360fastloan.ui.home.AddIdCardActivity;
 
@@ -36,6 +38,7 @@ public class PersonalActivity extends BaseActivity<BasePresenter,ActivityPersona
         mTitleBarLayout.setTitle("个人信息");
     }
 
+
     @Override
     protected void initEvent() {
         super.initEvent();
@@ -58,4 +61,28 @@ public class PersonalActivity extends BaseActivity<BasePresenter,ActivityPersona
             }
         });
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getUserInfo();
+    }
+
+    private void getUserInfo() {
+        Api.getApi().getUserInfo()
+                .compose(callbackOnIOToMainThread())
+                .subscribe(new BaseNetListener<UserInfoModel>(this, true) {
+                    @Override
+                    public void onSuccess(UserInfoModel userInfoModel) {
+                        MyApplication.getInstance().setUserInfo(userInfoModel);
+
+                    }
+
+                    @Override
+                    public void onFail(String errMsg) {
+
+                    }
+                });
+    }
+
 }

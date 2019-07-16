@@ -26,6 +26,7 @@ public class OrderPayActivity extends BaseActivity<BasePresenter, ActivityOrderP
     private String price = "";
     private List<UserInfoModel.CardBean> mDataList = new ArrayList<>();
     private CommonAdapter<UserInfoModel.CardBean> mAdapter;
+    private boolean is = false;
 
     @Override
     protected int getLayoutId() {
@@ -48,6 +49,7 @@ public class OrderPayActivity extends BaseActivity<BasePresenter, ActivityOrderP
         super.initData();
         mId = getIntent().getStringExtra("id");
         price = getIntent().getStringExtra("price");
+        is = getIntent().getBooleanExtra("is", false);
         mBinding.tvPrice.setText("需支付：" + price + "元");
 
         mAdapter = new CommonAdapter<UserInfoModel.CardBean>(aty, R.layout.item_bank_list, mDataList) {
@@ -136,13 +138,15 @@ public class OrderPayActivity extends BaseActivity<BasePresenter, ActivityOrderP
     }
 
     private void pay(String card_id) {
-        Api.getApi().pay("orders", mId, card_id)
+        Api.getApi().pay(is ? "recharges" : "orders", mId, card_id)
                 .compose(callbackOnIOToMainThread())
                 .subscribe(new BaseNetListener<String>(this, true) {
                     @Override
                     public void onSuccess(String s) {
                         showToast("支付成功!");
-                        startActivity(OrderActivity.class);
+                        if (!is) {
+                            startActivity(OrderActivity.class);
+                        }
                         finish();
                     }
 
