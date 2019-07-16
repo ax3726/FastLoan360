@@ -78,7 +78,7 @@ public interface ApiService {
      * @param product_id
      * @return
      */
-    @GET("api/orders")
+    @POST("api/orders")
     Flowable<OrderModel> addOrders(@Query("product_id") String product_id);
 
     //获取当前用户信息
@@ -96,6 +96,15 @@ public interface ApiService {
                              @Query("type") String type,
                              @Query("code") String code,
                              @Query("date") String date);
+    /**
+     * 添加银行卡信息
+     *
+     * @return
+     */
+    @POST("api/pay")
+    Flowable<String> pay(@Query("pay_type") String pay_type,
+                             @Query("pay_id") String pay_id,
+                             @Query("card_id") String card_id);
 
     //添加个人信息
     @POST("api/users/info")

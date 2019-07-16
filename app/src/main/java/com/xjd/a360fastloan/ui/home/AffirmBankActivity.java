@@ -1,5 +1,6 @@
 package com.xjd.a360fastloan.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -9,8 +10,11 @@ import com.lm.lib_common.base.BaseNetListener;
 import com.lm.lib_common.base.BasePresenter;
 import com.xjd.a360fastloan.R;
 import com.xjd.a360fastloan.common.Api;
+import com.xjd.a360fastloan.common.Link;
 import com.xjd.a360fastloan.databinding.ActivityAffirmBankBinding;
 import com.xjd.a360fastloan.model.home.BankModel;
+import com.xjd.a360fastloan.ui.common.WebViewActivity;
+import com.xjd.a360fastloan.widget.SoftKeyBoardListener;
 
 public class AffirmBankActivity extends BaseActivity<BasePresenter, ActivityAffirmBankBinding> {
 
@@ -73,13 +77,34 @@ public class AffirmBankActivity extends BaseActivity<BasePresenter, ActivityAffi
                     showToast("请接受协议!");
                     return;
                 }
+                if (TextUtils.isEmpty(bank_type)) {
+                    showToast("银行卡信息有误!");
+                }
 
-                startActivity(CreditAssessActivity.class);
+                addUserInfo(bank_type);
+
             }
         });
         mBinding.tvCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                check();
+            }
+        });
+        mBinding.tvAgreement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(aty, WebViewActivity.class).putExtra("url", Link.AGREE_WITH_HOLD));
+            }
+        });
+        SoftKeyBoardListener.setListener(aty, new SoftKeyBoardListener.OnSoftKeyBoardChangeListener() {
+            @Override
+            public void keyBoardShow(int height) {
+
+            }
+
+            @Override
+            public void keyBoardHide(int height) {
                 check();
             }
         });
@@ -91,11 +116,11 @@ public class AffirmBankActivity extends BaseActivity<BasePresenter, ActivityAffi
         String bank = mBinding.etPhone.getText().toString().trim();
         String bank_phone = mBinding.etBankPhone.getText().toString().trim();
         if (TextUtils.isEmpty(bank)) {
-            showToast("银行卡信息不能为空!");
+            //  showToast("银行卡信息不能为空!");
             return;
         }
         if (TextUtils.isEmpty(bank_phone)) {
-            showToast("银行卡信息不能为空!");
+            //  showToast("银行卡信息不能为空!");
             return;
         }
         Api.getApi().checkBank("bank_card", bank)
@@ -111,7 +136,7 @@ public class AffirmBankActivity extends BaseActivity<BasePresenter, ActivityAffi
                         }
                         mBinding.tvIdcardHint.setText(bankModel.getCardTypeName());
                         loadImag(bankModel.getBankImg(), mBinding.imgBank, 0);
-                        addUserInfo(bankModel.getCardType());
+
                     }
 
                     @Override
@@ -150,7 +175,9 @@ public class AffirmBankActivity extends BaseActivity<BasePresenter, ActivityAffi
                 .subscribe(new BaseNetListener<String>(this, true) {
                     @Override
                     public void onSuccess(String infoModel) {
-
+                        showToast("提交成功!");
+                        startActivity(CreditAssessActivity.class);
+                        finish();
                     }
 
                     @Override

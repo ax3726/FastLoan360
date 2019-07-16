@@ -14,6 +14,7 @@
             android:background="@color/colorF0F3FF"
             android:orientation="horizontal"
             android:paddingLeft="30px"
+            android:visibility="gone"
             android:paddingTop="21px"
             android:paddingRight="30px">
 
@@ -37,7 +38,6 @@
         <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30px"
             android:paddingLeft="30px"
             android:visibility="gone"
             android:paddingRight="30px">

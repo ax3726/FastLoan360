@@ -14,8 +14,6 @@ import com.xjd.a360fastloan.databinding.ActivityProductInfoBinding;
 import com.xjd.a360fastloan.model.home.OrderModel;
 import com.xjd.a360fastloan.model.home.ProdectInfoModel;
 
-import java.text.DecimalFormat;
-
 public class ProductInfoActivity extends BaseActivity<BasePresenter, ActivityProductInfoBinding> {
 
     private int mId = 0;
@@ -63,7 +61,8 @@ public class ProductInfoActivity extends BaseActivity<BasePresenter, ActivityPro
                 .subscribe(new BaseNetListener<OrderModel>(this, true) {
                     @Override
                     public void onSuccess(OrderModel orderModel) {
-                        startActivity(new Intent(aty,OrderPayActivity.class).putExtra("id",orderModel.getOrder_id()));
+                        startActivity(new Intent(aty, OrderPayActivity.class).putExtra("id", orderModel.getOrder_id()).putExtra("price", mProdectInfoModel.getPrice()));
+                        finish();
                     }
 
                     @Override
@@ -93,8 +92,12 @@ public class ProductInfoActivity extends BaseActivity<BasePresenter, ActivityPro
                     @Override
                     public void onSuccess(ProdectInfoModel infoModel) {
                         mProdectInfoModel = infoModel;
-                        DecimalFormat df = new DecimalFormat("000%");
-                        mBinding.tvPrecent.setText(df.format(Double.valueOf(infoModel.getRebate())).replace("%", ""));
+                        int percent = 0;
+                        try {
+                            percent = (int) (Double.valueOf(infoModel.getRebate()) * 100);
+                        } catch (Exception rx) {
+                        }
+                        mBinding.tvPrecent.setText(percent + "");
                         mBinding.tvMoney.setText(infoModel.getMax() + "");
                         mBinding.tvDay.setText(TextUtils.isEmpty(infoModel.getCycle()) ? "0" : infoModel.getCycle().replace("天", ""));
                         mBinding.tvContent.setText("举例：借款15000元，期限为15天，6个月之后一次性自 动扣款或手动扣款 \n最快一天放款 \n日利率：0.01% \n还款方式：1.银行代扣；2.主动还款 \n服务费：" + infoModel.getPrice() + "元");

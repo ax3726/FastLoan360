@@ -1,15 +1,17 @@
 package com.xjd.a360fastloan.ui.home;
 
 
+import android.content.Intent;
 import android.view.View;
-
 
 import com.lm.lib_common.base.BaseActivity;
 import com.lm.lib_common.base.BasePresenter;
 import com.xjd.a360fastloan.R;
+import com.xjd.a360fastloan.common.Link;
 import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivityCreditAssessBinding;
 import com.xjd.a360fastloan.model.main.UserInfoModel;
+import com.xjd.a360fastloan.ui.common.WebViewActivity;
 
 
 public class CreditAssessActivity extends BaseActivity<BasePresenter, ActivityCreditAssessBinding> {
@@ -44,6 +46,12 @@ public class CreditAssessActivity extends BaseActivity<BasePresenter, ActivityCr
             @Override
             public void onClick(View v) {
                 startActivity(SmartRecommendActivity.class);
+            }
+        });
+        mBinding.tvAgreement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(aty, WebViewActivity.class).putExtra("url", Link.AGREE_ASSESSMENT));
             }
         });
     }

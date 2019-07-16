@@ -86,10 +86,6 @@
                 android:background="@color/colorLine" />
 
 
-
-
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -201,9 +197,8 @@
             android:id="@+id/view_xin"
             android:layout_width="match_parent"
             android:layout_height="30px"
-            android:visibility="gone"
             android:background="#F0F3FF"
-           />
+            android:visibility="gone" />
 
         <com.zhy.autolayout.AutoRelativeLayout
             android:id="@+id/rly_bank"
@@ -211,9 +206,9 @@
             android:layout_height="wrap_content"
             android:paddingLeft="30px"
             android:paddingTop="30px"
-            android:visibility="gone"
             android:paddingRight="30px"
-            >
+            android:visibility="gone">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -241,6 +236,7 @@
                 android:layout_alignTop="@+id/tv_idcard_hint"
                 android:layout_marginRight="20px"
                 android:layout_toLeftOf="@+id/tv_idcard_hint" />
+
             <View
                 android:id="@+id/vie_line_8"
                 android:layout_width="match_parent"
@@ -256,10 +252,9 @@
             android:layout_height="wrap_content"
             android:paddingLeft="30px"
             android:paddingTop="30px"
-            android:visibility="gone"
             android:paddingRight="30px"
             android:paddingBottom="30px"
-            >
+            android:visibility="gone">
 
 
             <TextView
@@ -303,16 +298,15 @@
                 android:id="@+id/et_bank_bei"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/vie_line_10"
                 android:layout_alignParentRight="true"
                 android:layout_marginLeft="140px"
                 android:layout_marginTop="30px"
                 android:background="@color/colorWhite"
                 android:gravity="right"
-                android:layout_below="@+id/vie_line_10"
                 android:hint="例如:911"
                 android:textColor="@color/color333333"
                 android:textSize="28px" />
-
 
 
         </com.zhy.autolayout.AutoRelativeLayout>
@@ -362,6 +356,7 @@
                     android:textSize="24px" />
 
                 <TextView
+                    android:id="@+id/tv_agreement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5px"

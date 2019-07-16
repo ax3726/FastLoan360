@@ -80,6 +80,7 @@ public class AddIdCardActivity extends PhotoActivity<BasePresenter, ActivityAddI
                                 .putExtra("sex", sex)
                                 .putExtra("education", education)
                                 .putExtra("marriage", marriage));
+                        finish();
                     }
 
                     @Override

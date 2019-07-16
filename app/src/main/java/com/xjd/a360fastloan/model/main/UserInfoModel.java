@@ -14,8 +14,8 @@ public class UserInfoModel {
      * updated_at : 2019-07-14 02:05:10
      * deleted_at : null
      * product : {"id":1,"name":"360极速借","icon":"files/bdacS0dBZDlkp5r0mki8BLBi004B4b4itKFUa3Du.png","min":1000,"max":15000,"rebate":"0.60","cycle":"90天","price":"198.00","v_click":"500万","url":null,"created_at":"2019-06-20 13:19:26","updated_at":"2019-07-15 20:37:27","deleted_at":null,"iconsrc":"http://cash.free.idcfengye.com/storage/files/bdacS0dBZDlkp5r0mki8BLBi004B4b4itKFUa3Du.png"}
-     * info : {"id":2,"user_id":2,"name":"黎明","sex":"男","id_card":"360734199602211310","address":"这个是hi地址","education":"本科","marriage":"未婚","created_at":"2019-07-15 22:00:14","updated_at":"2019-07-15 22:00:14"}
-     * card : []
+     * info : {"id":1,"user_id":2,"name":"黎明","sex":"男","id_card":"360734199602211310","address":"这个是hi地址","education":"本科","marriage":"未婚","created_at":"2019-07-15 22:39:17","updated_at":"2019-07-15 22:39:17"}
+     * card : [{"id":1,"user_id":2,"number":"6222620290001716639","mobile":"15170183726","logo":"https://apimg.alipay.com/combo.png?d=cashier&t=COMM","name":"交通银行","type":"储蓄卡","code":null,"date":null,"created_at":"2019-07-15 22:39:17","updated_at":"2019-07-15 22:39:17"},{"id":2,"user_id":2,"number":"6222620290001716637","mobile":"15558112727","logo":"https://apimg.alipay.com/combo.png?d=cashier&t=COMM","name":"交通银行","type":"储蓄卡","code":null,"date":null,"created_at":"2019-07-16 05:29:56","updated_at":"2019-07-16 05:29:56"},{"id":3,"user_id":2,"number":"6222600260001072443","mobile":"15170193726","logo":"https://apimg.alipay.com/combo.png?d=cashier&t=COMM","name":"交通银行","type":"储蓄卡","code":null,"date":null,"created_at":"2019-07-16 05:50:28","updated_at":"2019-07-16 05:50:28"}]
      * job : null
      * relation : []
      */
@@ -30,7 +30,7 @@ public class UserInfoModel {
     private ProductBean product;
     private InfoBean info;
     private Object job;
-    private List<?> card;
+    private List<CardBean> card;
     private List<?> relation;
 
     public int getId() {
@@ -113,11 +113,11 @@ public class UserInfoModel {
         this.job = job;
     }
 
-    public List<?> getCard() {
+    public List<CardBean> getCard() {
         return card;
     }
 
-    public void setCard(List<?> card) {
+    public void setCard(List<CardBean> card) {
         this.card = card;
     }
 
@@ -277,7 +277,7 @@ public class UserInfoModel {
 
     public static class InfoBean {
         /**
-         * id : 2
+         * id : 1
          * user_id : 2
          * name : 黎明
          * sex : 男
@@ -285,8 +285,8 @@ public class UserInfoModel {
          * address : 这个是hi地址
          * education : 本科
          * marriage : 未婚
-         * created_at : 2019-07-15 22:00:14
-         * updated_at : 2019-07-15 22:00:14
+         * created_at : 2019-07-15 22:39:17
+         * updated_at : 2019-07-15 22:39:17
          */
 
         private int id;
@@ -362,6 +362,131 @@ public class UserInfoModel {
 
         public void setMarriage(String marriage) {
             this.marriage = marriage;
+        }
+
+        public String getCreated_at() {
+            return created_at;
+        }
+
+        public void setCreated_at(String created_at) {
+            this.created_at = created_at;
+        }
+
+        public String getUpdated_at() {
+            return updated_at;
+        }
+
+        public void setUpdated_at(String updated_at) {
+            this.updated_at = updated_at;
+        }
+    }
+
+    public static class CardBean {
+        /**
+         * id : 1
+         * user_id : 2
+         * number : 6222620290001716639
+         * mobile : 15170183726
+         * logo : https://apimg.alipay.com/combo.png?d=cashier&t=COMM
+         * name : 交通银行
+         * type : 储蓄卡
+         * code : null
+         * date : null
+         * created_at : 2019-07-15 22:39:17
+         * updated_at : 2019-07-15 22:39:17
+         */
+
+        private boolean is_select=false;
+        private int id;
+        private int user_id;
+        private String number;
+        private String mobile;
+        private String logo;
+        private String name;
+        private String type;
+        private Object code;
+        private Object date;
+        private String created_at;
+        private String updated_at;
+
+        public boolean isIs_select() {
+            return is_select;
+        }
+
+        public void setIs_select(boolean is_select) {
+            this.is_select = is_select;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public int getUser_id() {
+            return user_id;
+        }
+
+        public void setUser_id(int user_id) {
+            this.user_id = user_id;
+        }
+
+        public String getNumber() {
+            return number;
+        }
+
+        public void setNumber(String number) {
+            this.number = number;
+        }
+
+        public String getMobile() {
+            return mobile;
+        }
+
+        public void setMobile(String mobile) {
+            this.mobile = mobile;
+        }
+
+        public String getLogo() {
+            return logo;
+        }
+
+        public void setLogo(String logo) {
+            this.logo = logo;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public Object getCode() {
+            return code;
+        }
+
+        public void setCode(Object code) {
+            this.code = code;
+        }
+
+        public Object getDate() {
+            return date;
+        }
+
+        public void setDate(Object date) {
+            this.date = date;
         }
 
         public String getCreated_at() {
