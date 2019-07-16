@@ -27,27 +27,27 @@ public class GsonResponseBodyConverter<T> implements Converter<ResponseBody, T> 
         this.type = type;
     }
 
-    public Class<T> getRealType() {
-        // 获取当前new的对象的泛型的父类类型
-        ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass();
-        // 获取第一个类型参数的真实类型
-        return (Class<T>) pt.getActualTypeArguments()[0];
-    }
-
 
     @Override
     public T convert(ResponseBody value) throws IOException {
 
         String response = value.string();
-        if (TextUtils.isEmpty(response)) {
-            response="成功!";
-        }
+
         Log.e("msg", "response" + response);
         try {
 
-            if (response.length()>0&&response.substring(0, 1).equals("[")) {
-               return gson.fromJson(response, this.type);
+            if (TextUtils.isEmpty(response)) {
+                response = "成功!";
+                return gson.fromJson(response, this.type);
             }
+
+            if (response.length() > 0 && response.substring(0, 1).equals("[")) {
+                if (response.length() == 2) {
+                    response = "成功!";
+                }
+                return gson.fromJson(response, this.type);
+            }
+
 
             ErrorBean errorBean = gson.fromJson(response, ErrorBean.class);
             if (errorBean != null && !TextUtils.isEmpty(errorBean.getMessage())) {//登录失效
