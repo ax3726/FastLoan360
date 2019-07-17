@@ -125,7 +125,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/icon_shenghe_02" />
+                    android:background="@drawable/icon_shenhe_02" />
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

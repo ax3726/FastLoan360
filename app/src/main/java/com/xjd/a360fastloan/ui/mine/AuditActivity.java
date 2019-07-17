@@ -1,5 +1,6 @@
 package com.xjd.a360fastloan.ui.mine;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -23,6 +25,7 @@ import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivityAuditBinding;
 import com.xjd.a360fastloan.databinding.ActivityOrderBinding;
 import com.xjd.a360fastloan.model.home.ProductListModel;
+import com.xjd.a360fastloan.ui.home.ProductInfoActivity;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -64,28 +67,40 @@ public class AuditActivity extends BaseActivity<BasePresenter,ActivityAuditBindi
 
 
 
-        mBinding.tv01.setText(MyApplication.getInstance().getUserInfo().getProduct().getName().toString());
-        mBinding.tv02.setText("额度"+MyApplication.getInstance().getUserInfo().getProduct().getMax()+"元");
-        mBinding.tv04.setText("周期"+MyApplication.getInstance().getUserInfo().getProduct().getCycle());
-        mBinding.tv03.setText("¥  "+MyApplication.getInstance().getUserInfo().getProduct().getPrice());
+        mBinding.tv01.setText(getIntent().getStringExtra("tv_01"));
+        mBinding.tv02.setText(getIntent().getStringExtra("tv_02"));
+        mBinding.tv04.setText(getIntent().getStringExtra("tv_03"));
+        mBinding.tv03.setText(getIntent().getStringExtra("tv_04"));
 
-        Glide.with(this).load(MyApplication.getInstance().getUserInfo().getProduct().getIconsrc()).into(mBinding.image01);
+        Glide.with(this).load(getIntent().getStringExtra("image_01")).into(mBinding.image01);
+        mBinding.btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(DrawbackActivity.class);
+            }
+        });
         getProducts();
         mAdapter = new CommonAdapter<ProductListModel>(aty, R.layout.selectorderlistviewlay, mDataList) {
             @Override
             protected void convert(ViewHolder holder, ProductListModel productListModel, int position) {
-                DecimalFormat df = new DecimalFormat("000.00%");
 
-                holder.setText(R.id.tv_01,mDataList.get(position).getName())
-                        .setImageurl(R.id.image_01,mDataList.get(position).getIconsrc(),0)
-                        .setText(R.id.tv_02,mDataList.get(position).getMin()+"-"+mDataList.get(position).getMax()+"元")
-                        .setText(R.id.tv_04,mDataList.get(position).getRebate()+"%")
-                        .setText(R.id.tv_06,mDataList.get(position).getV_click()+"万申请");
+                int percent = 0;
+                try {
+                    percent = (int) (Double.valueOf(productListModel.getRebate()) * 100);
+                } catch (Exception rx) {
+                }
+                ProgressBar progressBar = holder.getView(R.id.progressbar);
+                progressBar.setProgress(percent);
+                holder.setText(R.id.tv_01, mDataList.get(position).getName())
+                        .setImageurl(R.id.image_01, mDataList.get(position).getIconsrc(), 0)
+                        .setText(R.id.tv_02, mDataList.get(position).getMin() + "-" + mDataList.get(position).getMax() + "元")
+                        .setText(R.id.tv_04, percent + "%")
+                        .setText(R.id.tv_06, mDataList.get(position).getV_click() + "申请");
 
                 holder.getView(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(DrawbackActivity.class);
+                        startActivity(new Intent(aty, ProductInfoActivity.class).putExtra("id", productListModel.getId()));
                     }
                 });
             }

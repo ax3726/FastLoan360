@@ -73,7 +73,13 @@ public class OrderActivity extends BaseActivity<BasePresenter, ActivityOrderBind
           holder.getView(R.id.rly_item).setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                 startActivity(AuditActivity.class);
+                  Intent intent=new Intent(OrderActivity.this,AuditActivity.class);
+                  intent.putExtra("tv_01",mDataListOrder.get(position).getProduct().getName());
+                  intent.putExtra("image_01",mDataListOrder.get(position).getProduct().getIconsrc());
+                  intent.putExtra("tv_02","额度" + mDataListOrder.get(position).getProduct().getMax() + "元");
+                  intent.putExtra("tv_04","周期" +mDataListOrder.get(position).getProduct().getCycle());
+                  intent.putExtra("tv_03","¥  " +mDataListOrder.get(position).getProduct().getPrice());
+                 startActivity(intent);
               }
           });
 
@@ -89,6 +95,7 @@ public class OrderActivity extends BaseActivity<BasePresenter, ActivityOrderBind
         mAdapter = new CommonAdapter<ProductListModel>(aty, R.layout.selectorderlistviewlay, mDataList) {
             @Override
             protected void convert(ViewHolder holder, ProductListModel productListModel, int position) {
+
                 int percent = 0;
                 try {
                     percent = (int) (Double.valueOf(productListModel.getRebate()) * 100);
@@ -128,6 +135,7 @@ public class OrderActivity extends BaseActivity<BasePresenter, ActivityOrderBind
                     public void onSuccess(List<ProductListModel> list) {
                         mDataList.clear();
                         if (list != null && list.size() > 0) {
+                            mBinding.viewLine.setVisibility(View.VISIBLE);
                             mDataList.addAll(list);
                         }
                         mAdapter.notifyDataSetChanged();
