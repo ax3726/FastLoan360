@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rly_item"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginTop="10dp"
+    android:background="@color/white"
+    android:padding="10dp">
+
+
+
+        <ImageView
+            android:id="@+id/image_01"
+            android:layout_width="124px"
+            android:layout_height="124px"
+            android:layout_centerVertical="true"
+            />
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:layout_toRightOf="@id/image_01"
+            android:background="#e2e5e9" />
+
+        <TextView
+            android:id="@+id/tv_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/view_line"
+            android:text="360极速借"
+            android:textColor="#1e3751"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_01"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/view_line"
+            android:text="额度15000元"
+            android:textColor="#666666"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_02"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/view_line"
+            android:text=""
+            android:textColor="#ff2c59"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_01"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/tv_02"
+            android:text="周期90天"
+            android:textColor="#e2e5e9"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <Button
+
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@mipmap/order_icon_6"
+            android:text="审核中"
+            android:textColor="#e2e5e9"
+            android:textSize="10sp" />
+        <!--<Button-->
+        <!--android:textColor="@color/colorText"-->
+        <!--android:textSize="10sp"-->
+        <!--android:text="申请退款"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_below="@id/tv_01"-->
+        <!--android:layout_toRightOf="@id/tv_04"-->
+        <!--android:background="@drawable/grid_shap_two"-->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_height="25dp" />-->
+
+</com.zhy.autolayout.AutoRelativeLayout>

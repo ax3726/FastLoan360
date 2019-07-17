@@ -9,6 +9,7 @@ import com.xjd.a360fastloan.model.home.ProdectInfoModel;
 import com.xjd.a360fastloan.model.home.ProductListModel;
 import com.xjd.a360fastloan.model.main.LoginModel;
 import com.xjd.a360fastloan.model.main.UserInfoModel;
+import com.xjd.a360fastloan.model.mine.OrdersBean;
 import com.xjd.a360fastloan.model.mine.RechargesBean;
 
 import java.util.List;
@@ -133,7 +134,7 @@ public interface ApiService {
 
     //产品列表
     @GET("api/orders")
-    Flowable<List<ProductListModel>> getOrders();
+    Flowable<List<OrdersBean>> getOrders();
 
     //关联关系
     @POST("api/users/relation")

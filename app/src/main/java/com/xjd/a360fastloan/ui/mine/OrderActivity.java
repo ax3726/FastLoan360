@@ -2,6 +2,8 @@ package com.xjd.a360fastloan.ui.mine;
 
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -16,6 +18,7 @@ import com.xjd.a360fastloan.common.Api;
 import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivityOrderBinding;
 import com.xjd.a360fastloan.model.home.ProductListModel;
+import com.xjd.a360fastloan.model.mine.OrdersBean;
 import com.xjd.a360fastloan.ui.home.ProductInfoActivity;
 
 import java.util.ArrayList;
@@ -24,7 +27,8 @@ import java.util.List;
 public class OrderActivity extends BaseActivity<BasePresenter, ActivityOrderBinding> {
     private List<ProductListModel> mDataList = new ArrayList<>();
     private CommonAdapter<ProductListModel> mAdapter;
-
+    private List<OrdersBean> mDataListOrder = new ArrayList<>();
+    private CommonAdapter<OrdersBean> mAdapterOrder;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_order;
@@ -51,16 +55,37 @@ public class OrderActivity extends BaseActivity<BasePresenter, ActivityOrderBind
     protected void initData() {
         super.initData();
 
-        mBinding.tv01.setText(MyApplication.getInstance().getUserInfo().getProduct().getName().toString());
-        mBinding.tv02.setText("额度" + MyApplication.getInstance().getUserInfo().getProduct().getMax() + "元");
-        mBinding.tv04.setText("周期" + MyApplication.getInstance().getUserInfo().getProduct().getCycle());
-        mBinding.tv03.setText("¥  " + MyApplication.getInstance().getUserInfo().getProduct().getPrice());
 
-
-
-        Glide.with(this).load(MyApplication.getInstance().getUserInfo().getProduct().getIconsrc()).into(mBinding.image01);
         getOrders();
         getProducts();
+
+        //更多产品列表
+        mAdapterOrder = new CommonAdapter<OrdersBean>(aty, R.layout.item_orderlistviewlay, mDataListOrder) {
+            @Override
+            protected void convert(ViewHolder holder, OrdersBean productListModel, int position) {
+                holder.setText(R.id.tv_01, mDataListOrder.get(position).getProduct().getName())
+                        .setImageurl(R.id.image_01, mDataListOrder.get(position).getProduct().getIconsrc(), 0)
+                        .setText(R.id.tv_02,  "额度" + mDataListOrder.get(position).getProduct().getMax() + "元")
+                        .setText(R.id.tv_04, "周期" +mDataListOrder.get(position).getProduct().getCycle())
+                        .setText(R.id.tv_03, "¥  " +mDataListOrder.get(position).getProduct().getPrice());
+
+
+          holder.getView(R.id.rly_item).setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                 startActivity(AuditActivity.class);
+              }
+          });
+
+            }
+
+        };
+        mBinding.rcOrder.setLayoutManager(new LinearLayoutManager(aty));
+        mBinding.rcOrder.setNestedScrollingEnabled(false);
+        mBinding.rcOrder.setAdapter(mAdapterOrder);
+        mBinding.rcOrder.setNestedScrollingEnabled(false);
+
+        //更多产品列表
         mAdapter = new CommonAdapter<ProductListModel>(aty, R.layout.selectorderlistviewlay, mDataList) {
             @Override
             protected void convert(ViewHolder holder, ProductListModel productListModel, int position) {
@@ -90,12 +115,8 @@ public class OrderActivity extends BaseActivity<BasePresenter, ActivityOrderBind
         mBinding.rcBody.setNestedScrollingEnabled(false);
         mBinding.rcBody.setAdapter(mAdapter);
         mBinding.rcBody.setNestedScrollingEnabled(false);
-        mBinding.rlyItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(AuditActivity.class);
-            }
-        });
+
+
     }
 
 
@@ -123,14 +144,14 @@ public class OrderActivity extends BaseActivity<BasePresenter, ActivityOrderBind
     private void getOrders() {
         Api.getApi().getOrders()
                 .compose(callbackOnIOToMainThread())
-                .subscribe(new BaseNetListener<List<ProductListModel>>(this, true) {
+                .subscribe(new BaseNetListener<List<OrdersBean>>(this, true) {
                     @Override
-                    public void onSuccess(List<ProductListModel> list) {
-//                        mDataList.clear();
-//                        if (list != null && list.size() > 0) {
-//                            mDataList.addAll(list);
-//                        }
-//                        mAdapter.notifyDataSetChanged();
+                    public void onSuccess(List<OrdersBean> list) {
+                        mDataListOrder.clear();
+                        if (list != null && list.size() > 0) {
+                            mDataListOrder.addAll(list);
+                        }
+                        mAdapterOrder.notifyDataSetChanged();
                     }
 
                     @Override
