@@ -14,7 +14,7 @@ import com.xjd.a360fastloan.ui.home.AddContactInfoActivity;
 import com.xjd.a360fastloan.ui.home.AddIdCardActivity;
 
 public class PersonalActivity extends BaseActivity<BasePresenter, ActivityPersonalBinding> {
-
+    private UserInfoModel mUserInfoModel = null;
 
     @Override
     protected int getLayoutId() {
@@ -44,6 +44,10 @@ public class PersonalActivity extends BaseActivity<BasePresenter, ActivityPerson
         mBinding.tvJiben.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mUserInfoModel==null) {
+                    return;
+                }
+
                 if (mBinding.tvJiben.isSelected()) {
                     startActivity(AddIdCardActivity.class);
                 } else {
@@ -55,6 +59,9 @@ public class PersonalActivity extends BaseActivity<BasePresenter, ActivityPerson
         mBinding.tvGongzuo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mUserInfoModel==null) {
+                    return;
+                }
                 if (mBinding.tvGongzuo.isSelected()) {
                     startActivity(AddJobActivity.class);
                 } else {
@@ -65,6 +72,9 @@ public class PersonalActivity extends BaseActivity<BasePresenter, ActivityPerson
         mBinding.tvLianxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mUserInfoModel==null) {
+                    return;
+                }
                 if (mBinding.tvLianxi.isSelected()) {
                     startActivity(AddContactInfoActivity.class);
                 } else {
@@ -75,10 +85,17 @@ public class PersonalActivity extends BaseActivity<BasePresenter, ActivityPerson
         mBinding.tvBankcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mUserInfoModel==null) {
+                    return;
+                }
                 if (mBinding.tvJiben.isSelected()) {
-                    startActivity(AddBankCardActivity.class);
-                } else {//英航卡列表
-                    startActivity(BankcardActivity.class);
+                    startActivity(AddIdCardActivity.class);
+                } else {
+                    if (mBinding.tvJiben.isSelected()) {
+                        startActivity(AddBankCardActivity.class);
+                    } else {//英航卡列表
+                        startActivity(BankcardActivity.class);
+                    }
                 }
             }
         });
@@ -90,6 +107,7 @@ public class PersonalActivity extends BaseActivity<BasePresenter, ActivityPerson
         getUserInfo();
     }
 
+
     private void getUserInfo() {
         Api.getApi().getUserInfo()
                 .compose(callbackOnIOToMainThread())
@@ -97,7 +115,7 @@ public class PersonalActivity extends BaseActivity<BasePresenter, ActivityPerson
                     @Override
                     public void onSuccess(UserInfoModel userInfoModel) {
                         MyApplication.getInstance().setUserInfo(userInfoModel);
-
+                        mUserInfoModel = userInfoModel;
                         mBinding.tvJiben.setText(userInfoModel.getInfo() != null ? "已认证" : "未认证");
                         mBinding.tvJiben.setSelected(userInfoModel.getInfo() == null);
 
