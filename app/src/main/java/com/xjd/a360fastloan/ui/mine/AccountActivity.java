@@ -49,7 +49,7 @@ public class AccountActivity extends BaseActivity<BasePresenter, ActivityAccount
         mBinding.tvAgreement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(aty, WebViewActivity.class).putExtra("url", Link.AGREE_WITH_HOLD));
+                startActivity(new Intent(aty, WebViewActivity.class).putExtra("url", Link.AGREE_RECHANGRE));
             }
         });
         mBinding.llyCheck.setOnClickListener(new View.OnClickListener() {

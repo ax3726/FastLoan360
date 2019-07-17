@@ -103,6 +103,9 @@ public class ProductInfoActivity extends BaseActivity<BasePresenter, ActivityPro
                         mBinding.tvContent.setText("举例：借款15000元，期限为15天，6个月之后一次性自 动扣款或手动扣款 \n最快一天放款 \n日利率：0.01% \n还款方式：1.银行代扣；2.主动还款 \n服务费：" + infoModel.getPrice() + "元");
                         mBinding.tvContentRemark.setText("借款之前扣除服务费" + infoModel.getPrice() + "元");
                         mBinding.tvPrice.setText("服务费：" + infoModel.getPrice() + "借币");
+                        mBinding.llyLiu.setVisibility(View.VISIBLE);
+                        mBinding.llyLiu1.setVisibility(View.VISIBLE);
+                        mBinding.viewLiu.setVisibility(View.VISIBLE);
                     }
 
                     @Override

@@ -152,7 +152,7 @@
                 android:layout_marginTop="40px"
                 android:layout_marginRight="44px"
                 android:background="@drawable/shape_btn_common"
-                android:text="提交"
+                android:text="充值"
                 android:textColor="@color/colorWhite"
                 android:textSize="32px" />
 
@@ -184,7 +184,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5px"
-                    android:text="《360极速代扣协议》"
+                    android:text="《充值协议》"
                     android:textColor="@color/colorText"
                     android:textSize="24px" />
 
