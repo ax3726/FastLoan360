@@ -44,10 +44,9 @@ public class PersonalActivity extends BaseActivity<BasePresenter, ActivityPerson
         mBinding.tvJiben.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mUserInfoModel==null) {
+                if (mUserInfoModel == null) {
                     return;
                 }
-
                 if (mBinding.tvJiben.isSelected()) {
                     startActivity(AddIdCardActivity.class);
                 } else {
@@ -59,39 +58,47 @@ public class PersonalActivity extends BaseActivity<BasePresenter, ActivityPerson
         mBinding.tvGongzuo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mUserInfoModel==null) {
+                if (mUserInfoModel == null) {
                     return;
                 }
-                if (mBinding.tvGongzuo.isSelected()) {
-                    startActivity(AddJobActivity.class);
+                if (mBinding.tvJiben.isSelected()) {
+                    startActivity(AddIdCardActivity.class);
                 } else {
-                    startActivity(JobActivity.class);
+                    if (mBinding.tvGongzuo.isSelected()) {
+                        startActivity(AddJobActivity.class);
+                    } else {
+                        startActivity(JobActivity.class);
+                    }
                 }
             }
         });
         mBinding.tvLianxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mUserInfoModel==null) {
+                if (mUserInfoModel == null) {
                     return;
                 }
-                if (mBinding.tvLianxi.isSelected()) {
-                    startActivity(AddContactInfoActivity.class);
+                if (mBinding.tvJiben.isSelected()) {
+                    startActivity(AddIdCardActivity.class);
                 } else {
-                    startActivity(LinkmanActivity.class);
+                    if (mBinding.tvLianxi.isSelected()) {
+                        startActivity(AddContactInfoActivity.class);
+                    } else {
+                        startActivity(LinkmanActivity.class);
+                    }
                 }
             }
         });
         mBinding.tvBankcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mUserInfoModel==null) {
+                if (mUserInfoModel == null) {
                     return;
                 }
                 if (mBinding.tvJiben.isSelected()) {
                     startActivity(AddIdCardActivity.class);
                 } else {
-                    if (mBinding.tvJiben.isSelected()) {
+                    if (mBinding.tvBankcard.isSelected()) {
                         startActivity(AddBankCardActivity.class);
                     } else {//英航卡列表
                         startActivity(BankcardActivity.class);
@@ -122,11 +129,11 @@ public class PersonalActivity extends BaseActivity<BasePresenter, ActivityPerson
                         mBinding.tvGongzuo.setText(userInfoModel.getJob() != null ? "已完成" : "未完成");
                         mBinding.tvGongzuo.setSelected(userInfoModel.getJob() == null);
 
-                        mBinding.tvLianxi.setText(userInfoModel.getRelation() != null ? "已完成" : "未完成");
-                        mBinding.tvLianxi.setSelected(userInfoModel.getRelation() == null);
+                        mBinding.tvLianxi.setText(userInfoModel.getRelation() != null && userInfoModel.getRelation().size() > 0 ? "已完成" : "未完成");
+                        mBinding.tvLianxi.setSelected(userInfoModel.getRelation() == null || userInfoModel.getRelation().size() == 0);
 
-                        mBinding.tvBankcard.setText(userInfoModel.getCard() != null ? "已完成" : "未完成");
-                        mBinding.tvBankcard.setSelected(userInfoModel.getCard() == null);
+                        mBinding.tvBankcard.setText(userInfoModel.getCard() != null && userInfoModel.getCard().size() > 0 ? "已完成" : "未完成");
+                        mBinding.tvBankcard.setSelected(userInfoModel.getCard() == null || userInfoModel.getCard().size() == 0);
 
                     }
 

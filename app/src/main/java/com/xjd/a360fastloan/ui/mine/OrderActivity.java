@@ -3,13 +3,10 @@ package com.xjd.a360fastloan.ui.mine;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.lm.lib_common.adapters.recyclerview.CommonAdapter;
 import com.lm.lib_common.adapters.recyclerview.base.ViewHolder;
 import com.lm.lib_common.base.BaseActivity;
@@ -17,7 +14,6 @@ import com.lm.lib_common.base.BaseNetListener;
 import com.lm.lib_common.base.BasePresenter;
 import com.xjd.a360fastloan.R;
 import com.xjd.a360fastloan.common.Api;
-import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivityOrderBinding;
 import com.xjd.a360fastloan.model.home.ProductListModel;
 import com.xjd.a360fastloan.model.mine.OrdersBean;
@@ -107,7 +103,7 @@ public class OrderActivity extends BaseActivity<BasePresenter, ActivityOrderBind
                 } catch (Exception rx) {
                 }
                 ProgressBar progressBar = holder.getView(R.id.progressbar);
-                progressBar.setProgress(percent);
+                progressBar.setProgress(98);
                 holder.setText(R.id.tv_01, mDataList.get(position).getName())
                         .setImageurl(R.id.image_01, mDataList.get(position).getIconsrc(), 0)
                         .setText(R.id.tv_02, mDataList.get(position).getMin() + "-" + mDataList.get(position).getMax() + "元")

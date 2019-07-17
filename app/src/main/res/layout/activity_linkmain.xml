@@ -46,7 +46,6 @@
                 android:background="@color/colorWhite"
                 android:drawablePadding="15px"
                 android:gravity="right"
-                android:hint="父母"
                 android:textColor="@color/color999999"
                 android:textSize="28px" />
 
@@ -78,7 +77,6 @@
                 android:background="@color/colorWhite"
                 android:drawablePadding="15px"
                 android:gravity="right"
-                android:hint="1368982563"
                 android:textColor="@color/color999999"
                 android:textSize="28px" />
 
@@ -111,7 +109,6 @@
 
                 android:drawablePadding="15px"
                 android:gravity="right"
-                android:text="将运城"
                 android:textColor="@color/color999999"
                 android:textSize="28px" />
         </com.zhy.autolayout.AutoRelativeLayout>

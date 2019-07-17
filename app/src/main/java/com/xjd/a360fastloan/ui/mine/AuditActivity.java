@@ -2,17 +2,9 @@ package com.xjd.a360fastloan.ui.mine;
 
 import android.content.Intent;
 import android.graphics.Paint;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.lm.lib_common.adapters.recyclerview.CommonAdapter;
@@ -22,21 +14,16 @@ import com.lm.lib_common.base.BaseNetListener;
 import com.lm.lib_common.base.BasePresenter;
 import com.xjd.a360fastloan.R;
 import com.xjd.a360fastloan.common.Api;
-import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivityAuditBinding;
-import com.xjd.a360fastloan.databinding.ActivityOrderBinding;
 import com.xjd.a360fastloan.model.home.ProductListModel;
 import com.xjd.a360fastloan.ui.home.ProductInfoActivity;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class AuditActivity extends BaseActivity<BasePresenter,ActivityAuditBinding> {
+public class AuditActivity extends BaseActivity<BasePresenter, ActivityAuditBinding> {
 
-    private List<ProductListModel>          mDataList = new ArrayList<>();
+    private List<ProductListModel> mDataList = new ArrayList<>();
     private CommonAdapter<ProductListModel> mAdapter;
 
     @Override
@@ -60,14 +47,9 @@ public class AuditActivity extends BaseActivity<BasePresenter,ActivityAuditBindi
         mTitleBarLayout.setTitle("审核流程");
     }
 
-
-
     @Override
     protected void initData() {
         super.initData();
-
-
-
         mBinding.tv01.setText(getIntent().getStringExtra("tv_01"));
         mBinding.tv02.setText(getIntent().getStringExtra("tv_02"));
         mBinding.tv03.setText(getIntent().getStringExtra("tv_03"));
@@ -92,7 +74,7 @@ public class AuditActivity extends BaseActivity<BasePresenter,ActivityAuditBindi
                 } catch (Exception rx) {
                 }
                 ProgressBar progressBar = holder.getView(R.id.progressbar);
-                progressBar.setProgress(percent);
+                progressBar.setProgress(98);
                 holder.setText(R.id.tv_01, mDataList.get(position).getName())
                         .setImageurl(R.id.image_01, mDataList.get(position).getIconsrc(), 0)
                         .setText(R.id.tv_02, mDataList.get(position).getMin() + "-" + mDataList.get(position).getMax() + "元")
