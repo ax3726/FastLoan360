@@ -1,11 +1,13 @@
 package com.xjd.a360fastloan.ui.mine;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.lm.lib_common.adapters.recyclerview.CommonAdapter;
@@ -67,8 +69,10 @@ public class OrderActivity extends BaseActivity<BasePresenter, ActivityOrderBind
                         .setImageurl(R.id.image_01, mDataListOrder.get(position).getProduct().getIconsrc(), 0)
                         .setText(R.id.tv_02,  "额度" + mDataListOrder.get(position).getProduct().getMax() + "元")
                         .setText(R.id.tv_04, "周期" +mDataListOrder.get(position).getProduct().getCycle())
-                        .setText(R.id.tv_03, "¥  " +mDataListOrder.get(position).getProduct().getPrice());
-
+                        .setText(R.id.tv_03, "￥" +mDataListOrder.get(position).getProduct().getPrice())
+                        .setText(R.id.tv_05, "￥" + (Double.valueOf(productListModel.getProduct().getPrice()) + 100));
+                TextView tv_money_old = holder.getView(R.id.tv_05);
+                tv_money_old.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
 
           holder.getView(R.id.rly_item).setOnClickListener(new View.OnClickListener() {
               @Override
@@ -78,7 +82,8 @@ public class OrderActivity extends BaseActivity<BasePresenter, ActivityOrderBind
                   intent.putExtra("image_01",mDataListOrder.get(position).getProduct().getIconsrc());
                   intent.putExtra("tv_02","额度" + mDataListOrder.get(position).getProduct().getMax() + "元");
                   intent.putExtra("tv_04","周期" +mDataListOrder.get(position).getProduct().getCycle());
-                  intent.putExtra("tv_03","¥  " +mDataListOrder.get(position).getProduct().getPrice());
+                  intent.putExtra("tv_03","￥" +mDataListOrder.get(position).getProduct().getPrice());
+                  intent.putExtra("tv_05","￥" + (Double.valueOf(productListModel.getProduct().getPrice()) + 100));
                  startActivity(intent);
               }
           });

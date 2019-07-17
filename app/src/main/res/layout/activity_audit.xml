@@ -10,29 +10,31 @@
             android:layout_height="match_parent"
             android:background="@color/colorF0F3FF"
             android:orientation="vertical">
-
-
             <com.zhy.autolayout.AutoRelativeLayout
                 android:id="@+id/rly_item"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:padding="10dp">
+                android:paddingTop="36px"
+                android:paddingBottom="36px"
+                android:paddingLeft="40px"
+                android:paddingRight="40px"
+                >
+
+
 
                 <ImageView
                     android:id="@+id/image_01"
                     android:layout_width="124px"
                     android:layout_height="124px"
-                    android:layout_centerVertical="true"
-
                     />
 
                 <View
                     android:id="@+id/view_line"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="15dp"
+                    android:layout_marginLeft="32px"
+                    android:layout_marginRight="32px"
+                    android:layout_height="124px"
                     android:layout_toRightOf="@id/image_01"
                     android:background="#e2e5e9" />
 
@@ -40,39 +42,46 @@
                     android:id="@+id/tv_01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="10dp"
                     android:layout_toRightOf="@id/view_line"
                     android:text="360极速借"
                     android:textColor="#1e3751"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:textSize="28px"
+                    />
 
                 <TextView
                     android:id="@+id/tv_02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_01"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="19px"
                     android:layout_toRightOf="@id/view_line"
                     android:text="额度15000元"
                     android:textColor="#666666"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textSize="22px" />
 
                 <TextView
                     android:id="@+id/tv_03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_02"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="12px"
                     android:layout_toRightOf="@id/view_line"
-                    android:text="¥ 168"
+                    android:text=""
                     android:textColor="#ff2c59"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textSize="20px" />
+
+                <TextView
+                    android:id="@+id/tv_05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_02"
+                    android:layout_marginTop="12px"
+                    android:layout_marginLeft="23px"
+                    android:layout_toRightOf="@id/tv_03"
+                    android:text=""
+                    android:textColor="#d8d8d8"
+                    android:textSize="18px" />
+
 
                 <TextView
                     android:id="@+id/tv_04"
@@ -80,23 +89,12 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_01"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="19px"
                     android:layout_toRightOf="@id/tv_02"
                     android:text="周期90天"
                     android:textColor="#e2e5e9"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-                <!--<Button-->
+                    android:textSize="22px" />
 
-                <!--android:layout_marginRight="5dp"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:background="@mipmap/order_icon_6"-->
-                <!--android:text="审核中"-->
-                <!--android:textColor="#e2e5e9"-->
-                <!--android:textSize="10sp"-->
-                <!--android:layout_width="60dp"-->
-                <!--android:layout_height="60dp" />-->
                 <Button
                     android:id="@+id/btn_submit"
                     android:layout_width="130px"
@@ -108,8 +106,10 @@
                     android:background="@drawable/grid_shap_two"
                     android:text="申请退款"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp" />
+                    android:textSize="22px" />
+
             </com.zhy.autolayout.AutoRelativeLayout>
+
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"

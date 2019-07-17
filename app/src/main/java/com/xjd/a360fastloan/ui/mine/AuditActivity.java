@@ -1,6 +1,7 @@
 package com.xjd.a360fastloan.ui.mine;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -69,9 +70,10 @@ public class AuditActivity extends BaseActivity<BasePresenter,ActivityAuditBindi
 
         mBinding.tv01.setText(getIntent().getStringExtra("tv_01"));
         mBinding.tv02.setText(getIntent().getStringExtra("tv_02"));
-        mBinding.tv04.setText(getIntent().getStringExtra("tv_03"));
-        mBinding.tv03.setText(getIntent().getStringExtra("tv_04"));
-
+        mBinding.tv03.setText(getIntent().getStringExtra("tv_03"));
+        mBinding.tv04.setText(getIntent().getStringExtra("tv_04"));
+        mBinding.tv05.setText(getIntent().getStringExtra("tv_05"));
+        mBinding.tv05.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         Glide.with(this).load(getIntent().getStringExtra("image_01")).into(mBinding.image01);
         mBinding.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override

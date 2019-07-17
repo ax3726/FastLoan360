@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200px"
+    android:layout_height="wrap_content"
     android:background="@color/white"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp">
+   android:paddingTop="30px"
+    android:paddingLeft="30px"
+    android:paddingRight="30px"
+
+    >
 
     <ImageView
         android:id="@+id/image_01"
-        android:layout_width="120px"
-        android:layout_height="120px"
-        android:layout_centerVertical="true" />
+        android:layout_width="124px"
+        android:layout_height="124px"
+        android:layout_marginTop="8px" />
 
     <View
         android:id="@+id/view_line"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_margin="36px"
+        android:layout_width="1px"
+        android:layout_height="140px"
+        android:layout_marginLeft="32px"
+        android:layout_marginRight="32px"
         android:layout_toRightOf="@id/image_01"
         android:background="#ccc" />
 
 
     <TextView
-        android:layout_toRightOf="@id/view_line"
         android:id="@+id/tv_01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36px"
+        android:layout_toRightOf="@id/view_line"
         android:text="秒借款"
         android:textColor="#1e3751"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+        android:textSize="28px" />
 
     <TextView
         android:id="@id/tv_02"
@@ -41,7 +43,7 @@
         android:layout_toRightOf="@id/view_line"
         android:text="3-5万"
         android:textColor="#ff2c59"
-        android:textSize="12sp"
+        android:textSize="24px"
         android:textStyle="bold" />
 
     <TextView
@@ -53,8 +55,8 @@
         android:layout_toRightOf="@id/view_line"
         android:text="可借额度"
         android:textColor="#e2e5e9"
-        android:textSize="10sp"
-        android:textStyle="bold" />
+        android:textSize="20px"
+        />
 
     <TextView
         android:id="@id/tv_04"
@@ -65,26 +67,27 @@
         android:layout_toRightOf="@+id/tv_02"
         android:text="0.60%"
         android:textColor="#ff2c59"
-        android:textSize="12sp"
-        android:textStyle="bold" />
+        android:textSize="24px"
+      />
 
     <TextView
         android:id="@id/tv_05"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_04"
-        android:layout_marginLeft="30px"
         android:layout_marginTop="10px"
+        android:layout_alignLeft="@+id/tv_04"
         android:layout_toRightOf="@id/tv_03"
         android:text="已抢名额"
         android:textColor="#e2e5e9"
-        android:textSize="10sp"
-        android:textStyle="bold" />
+        android:textSize="20px"
+        />
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_03"
+        android:layout_marginTop="8px"
         android:layout_toEndOf="@+id/view_line"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -107,8 +110,7 @@
             android:layout_toRightOf="@id/progressbar"
             android:text="500万申请"
             android:textColor="#e2e5e9"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+            android:textSize="20px" />
 
     </com.zhy.autolayout.AutoLinearLayout>
 
@@ -117,21 +119,21 @@
         android:id="@+id/btn_submit"
         android:layout_width="130px"
         android:layout_height="38px"
-        android:layout_below="@id/tv_01"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
         android:layout_marginLeft="15px"
+        android:layout_marginTop="35px"
         android:background="@drawable/grid_shap_two"
         android:paddingLeft="6px"
         android:paddingRight="6px"
         android:text="申请借款"
         android:textColor="@color/colorText"
-        android:textSize="10sp" />
+        android:textSize="22px" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/image_01"
+        android:layout_marginTop="40px"
         android:background="#e2e5e9" />
 
 </com.zhy.autolayout.AutoRelativeLayout>

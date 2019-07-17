@@ -42,10 +42,22 @@ public class CreditAssessActivity extends BaseActivity<BasePresenter, ActivityCr
                 finish();
             }
         });
+        mBinding.llyCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mBinding.imgCheck.setSelected(!mBinding.imgCheck.isSelected());
+            }
+        });
         mBinding.tvLoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean selected = mBinding.imgCheck.isSelected();
+                if (!selected) {
+                    showToast("请接受协议!");
+                    return;
+                }
                 startActivity(SmartRecommendActivity.class);
+                finish();
             }
         });
         mBinding.tvAgreement.setOnClickListener(new View.OnClickListener() {

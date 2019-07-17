@@ -26,7 +26,7 @@ import java.util.List;
 public class SmartRecommendActivity extends BaseActivity<BasePresenter, ActivitySmartRecommendBinding> {
 
 
-    private List<ProductListModel> mDataList = new ArrayList<>();
+    private List<ProductListModel>          mDataList = new ArrayList<>();
     private CommonAdapter<ProductListModel> mAdapter;
 
     @Override
@@ -65,6 +65,7 @@ public class SmartRecommendActivity extends BaseActivity<BasePresenter, Activity
                         return;
                     }
                     startActivity(new Intent(aty, ProductInfoActivity.class).putExtra("id", choose.getId()));
+                    finish();
                 } else {
                     showToast("请选择产品！");
                 }
@@ -123,7 +124,7 @@ public class SmartRecommendActivity extends BaseActivity<BasePresenter, Activity
                         .setImageurl(R.id.img, item.getIconsrc(), 0)
                         .setText(R.id.tv_money_count, item.getMax() + "元")
                         .setText(R.id.tv_money, "￥" + item.getPrice())
-                        .setText(R.id.tv_money_old, "￥" + (item.getPrice() + 100))
+                        .setText(R.id.tv_money_old, "￥" + (Double.valueOf(item.getPrice()) + 100))
                         .setSelect(R.id.img_select, item.isIs_select())
                         .setOnClickListener(R.id.rly_item, new View.OnClickListener() {
                             @Override
