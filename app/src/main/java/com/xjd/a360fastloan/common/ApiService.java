@@ -7,6 +7,7 @@ import com.xjd.a360fastloan.model.home.IdCardModel;
 import com.xjd.a360fastloan.model.home.OrderModel;
 import com.xjd.a360fastloan.model.home.ProdectInfoModel;
 import com.xjd.a360fastloan.model.home.ProductListModel;
+import com.xjd.a360fastloan.model.main.BindModel;
 import com.xjd.a360fastloan.model.main.LoginModel;
 import com.xjd.a360fastloan.model.main.UserInfoModel;
 import com.xjd.a360fastloan.model.mine.OrdersBean;
@@ -86,20 +87,37 @@ public interface ApiService {
     @GET("api/users")
     Flowable<UserInfoModel> getUserInfo();
 
+
     /**
      * 添加银行卡信息
      *
      * @return
      */
     @POST("api/users/card")
-    Flowable<String> addCard(@Query("number") String number,
-                             @Query("mobile") String mobile,
-                             @Query("type") String type,
-                             @Query("code") String code,
-                             @Query("date") String date);
+    Flowable<BindModel> addCard(@Query("number") String number,
+                                @Query("mobile") String mobile,
+                                @Query("type") String type,
+                                @Query("code") String code,
+                                @Query("date") String date
+    );
 
     /**
      * 添加银行卡信息
+     *
+     * @return
+     */
+    @POST("api/users/card")
+    Flowable<String> addReCard(@Query("number") String number,
+                               @Query("mobile") String mobile,
+                               @Query("type") String type,
+                               @Query("code") String code,
+                               @Query("date") String date,
+                               @Query("unique_code") String unique_code,
+                               @Query("sms_code") String sms_code
+    );
+
+    /**
+     * 支付
      *
      * @return
      */
@@ -110,17 +128,34 @@ public interface ApiService {
 
     //添加个人信息
     @POST("api/users/info")
-    Flowable<String> addUserInfo(@Query("name") String name,
-                                 @Query("sex") String sex,
-                                 @Query("id_card") String id_card,
-                                 @Query("address") String address,
-                                 @Query("education") String education,
-                                 @Query("marriage") String marriage,
-                                 @Query("number") String number,
-                                 @Query("mobile") String mobile,
-                                 @Query("type") String type,
-                                 @Query("date") String date,
-                                 @Query("code") String code
+    Flowable<BindModel> addUserInfo(@Query("name") String name,
+                                    @Query("sex") String sex,
+                                    @Query("id_card") String id_card,
+                                    @Query("address") String address,
+                                    @Query("education") String education,
+                                    @Query("marriage") String marriage,
+                                    @Query("number") String number,
+                                    @Query("mobile") String mobile,
+                                    @Query("type") String type,
+                                    @Query("date") String date,
+                                    @Query("code") String code);
+
+    //添加个人信息
+    @POST("api/users/info")
+    Flowable<String> addReUserInfo(@Query("name") String name,
+                                   @Query("sex") String sex,
+                                   @Query("id_card") String id_card,
+                                   @Query("address") String address,
+                                   @Query("education") String education,
+                                   @Query("marriage") String marriage,
+                                   @Query("number") String number,
+                                   @Query("mobile") String mobile,
+                                   @Query("type") String type,
+                                   @Query("date") String date,
+                                   @Query("code") String code,
+                                   @Query("unique_code") String unique_code,
+                                   @Query("sms_code") String sms_code
+
     );
 
     //充值
@@ -130,7 +165,7 @@ public interface ApiService {
 
     //反馈
     @POST("api/feedback")
-    Flowable<String> getFeedback(@Query("content") String content,@Query("contact") String contact);
+    Flowable<String> getFeedback(@Query("content") String content, @Query("contact") String contact);
 
     //产品列表
     @GET("api/orders")

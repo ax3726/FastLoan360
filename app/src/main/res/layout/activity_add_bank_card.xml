@@ -69,6 +69,7 @@
                 android:layout_marginTop="30px"
                 android:background="@color/colorWhite"
                 android:gravity="right"
+                android:inputType="phone"
                 android:hint="请输入银行卡预留电话"
                 android:textColor="@color/color333333"
                 android:textSize="28px" />
@@ -100,12 +101,13 @@
                 android:layout_marginTop="30px"
                 android:layout_toRightOf="@+id/tv_code_hint"
                 android:background="@color/colorWhite"
-                android:gravity="right"
+                android:inputType="phone"
                 android:hint="请输入验证码"
+
                 android:textColor="@color/color333333"
                 android:textSize="28px" />
 
-            <TextView
+            <com.xjd.a360fastloan.widget.CountDownTextView
                 android:id="@+id/tv_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -215,7 +217,7 @@
                     android:layout_marginLeft="140px"
                     android:background="@color/colorWhite"
                     android:gravity="right"
-                    android:hint="例如:2022/12"
+                    android:hint="例如:07/22"
                     android:textColor="@color/color333333"
                     android:textSize="28px" />
 

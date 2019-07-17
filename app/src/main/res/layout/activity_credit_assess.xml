@@ -417,7 +417,7 @@
                         android:layout_below="@+id/tv_risk4"
                         android:layout_marginTop="27px"
                         android:lineSpacingExtra="10px"
-                        android:text="人脉关系的相对稳定等因素，是中和评估的考量因素 之一。"
+                        android:text="合理的消费行为，是中和评估的考量因素 之一。"
                         android:textColor="@color/color999999"
                         android:textSize="26px" />
 

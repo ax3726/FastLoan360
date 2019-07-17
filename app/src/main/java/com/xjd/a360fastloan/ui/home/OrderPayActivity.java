@@ -14,6 +14,7 @@ import com.xjd.a360fastloan.common.Api;
 import com.xjd.a360fastloan.common.MyApplication;
 import com.xjd.a360fastloan.databinding.ActivityOrderPayBinding;
 import com.xjd.a360fastloan.model.main.UserInfoModel;
+import com.xjd.a360fastloan.ui.mine.AccountActivity;
 import com.xjd.a360fastloan.ui.mine.AddBankCardActivity;
 import com.xjd.a360fastloan.ui.mine.OrderActivity;
 
@@ -146,6 +147,8 @@ public class OrderPayActivity extends BaseActivity<BasePresenter, ActivityOrderP
                         showToast("支付成功!");
                         if (!is) {
                             startActivity(OrderActivity.class);
+                        } else {
+                            startActivity(AccountActivity.class);
                         }
                         finish();
                     }

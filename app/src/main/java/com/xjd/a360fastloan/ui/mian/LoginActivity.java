@@ -3,6 +3,7 @@ package com.xjd.a360fastloan.ui.mian;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Toast;
 
 import com.lm.lib_common.base.BaseActivity;
 import com.lm.lib_common.base.BaseNetListener;
@@ -17,6 +18,7 @@ import com.xjd.a360fastloan.databinding.ActivityLoginBinding;
 import com.xjd.a360fastloan.model.main.LoginModel;
 import com.xjd.a360fastloan.model.main.UserInfoModel;
 import com.xjd.a360fastloan.ui.common.WebViewActivity;
+import com.xjd.a360fastloan.widget.CountDownTextView;
 
 public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBinding> {
 
@@ -47,12 +49,7 @@ public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBind
         mBinding.tvCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String phone = mBinding.etPhone.getText().toString();
-                if (TextUtils.isEmpty(phone)) {
-                    showToast("号码不能为空!");
-                    return;
-                }
-                getCode(phone);
+
             }
         });
         mBinding.llyCheck.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +64,30 @@ public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBind
                 startActivity(new Intent(aty, WebViewActivity.class).putExtra("url", Link.AGREE_REGISTER));
             }
         });
+
+        mBinding.tvCode.setNormalText("获取验证码")
+                .setCountDownText("重新获取(", ")")
+                .setCloseKeepCountDown(true)//关闭页面保持倒计时开关
+                .setCountDownClickable(true)//倒计时期间点击事件是否生效开关
+                .setShowFormatTime(true)//是否格式化时间
+                .setOnCountDownFinishListener(new CountDownTextView.OnCountDownFinishListener() {
+                    @Override
+                    public void onFinish() {
+                    }
+                })
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String phone = mBinding.etPhone.getText().toString();
+                        if (TextUtils.isEmpty(phone)) {
+                            showToast("号码不能为空!");
+                            return;
+                        }
+                        getCode(phone);
+
+                    }
+                });
+
     }
 
     private void getCode(String phone) {
@@ -76,6 +97,7 @@ public class LoginActivity extends BaseActivity<BasePresenter, ActivityLoginBind
                     @Override
                     public void onSuccess(String s) {
                         showToast("发送成功!");
+                        mBinding.tvCode.startCountDown(59);
                     }
 
                     @Override

@@ -68,7 +68,7 @@
                 android:textSize="28px" />
 
 
-            <TextView
+            <com.xjd.a360fastloan.widget.CountDownTextView
                 android:id="@+id/tv_code"
                 android:layout_width="wrap_content"
                 android:layout_height="55px"

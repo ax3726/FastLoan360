@@ -12,13 +12,16 @@ import com.xjd.a360fastloan.common.Api;
 import com.xjd.a360fastloan.common.Link;
 import com.xjd.a360fastloan.databinding.ActivityAddBankCardBinding;
 import com.xjd.a360fastloan.model.home.BankModel;
+import com.xjd.a360fastloan.model.main.BindModel;
 import com.xjd.a360fastloan.ui.common.WebViewActivity;
+import com.xjd.a360fastloan.widget.CountDownTextView;
 import com.xjd.a360fastloan.widget.SoftKeyBoardListener;
 
 public class AddBankCardActivity extends BaseActivity<BasePresenter, ActivityAddBankCardBinding> {
 
 
-    private String mCardType = null;
+    private String mCardType   = null;
+    private String unique_code = null;
 
     @Override
     protected int getLayoutId() {
@@ -48,7 +51,7 @@ public class AddBankCardActivity extends BaseActivity<BasePresenter, ActivityAdd
         mBinding.btnTurn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addCard();
+                addReCard();
             }
         });
         mBinding.tvAgreement.setOnClickListener(new View.OnClickListener() {
@@ -57,21 +60,33 @@ public class AddBankCardActivity extends BaseActivity<BasePresenter, ActivityAdd
                 startActivity(new Intent(aty, WebViewActivity.class).putExtra("url", Link.AGREE_WITH_HOLD));
             }
         });
-        mBinding.tvCode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                check();
-            }
-        });
-        SoftKeyBoardListener.setListener(aty, new SoftKeyBoardListener.OnSoftKeyBoardChangeListener() {
-            @Override
-            public void keyBoardShow(int height) {
 
-            }
+        mBinding.tvCode.setNormalText("获取验证码")
+                .setCountDownText("重新获取(", ")")
+                .setCloseKeepCountDown(true)//关闭页面保持倒计时开关
+                .setCountDownClickable(true)//倒计时期间点击事件是否生效开关
+                .setShowFormatTime(true)//是否格式化时间
+                .setOnCountDownFinishListener(new CountDownTextView.OnCountDownFinishListener() {
+                    @Override
+                    public void onFinish() {
+                    }
+                })
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        addCard();
+                    }
+                });
 
+        mBinding.etPhone.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void keyBoardHide(int height) {
-                check();
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 此处为得到焦点时的处理内容
+                } else {
+                    // 此处为失去焦点时的处理内容
+                    check();
+                }
             }
         });
 
@@ -79,12 +94,7 @@ public class AddBankCardActivity extends BaseActivity<BasePresenter, ActivityAdd
 
     private void check() {
         String bank = mBinding.etPhone.getText().toString().trim();
-        String bank_phone = mBinding.etBankPhone.getText().toString().trim();
         if (TextUtils.isEmpty(bank)) {
-            showToast("银行卡信息不能为空!");
-            return;
-        }
-        if (TextUtils.isEmpty(bank_phone)) {
             showToast("银行卡信息不能为空!");
             return;
         }
@@ -114,11 +124,11 @@ public class AddBankCardActivity extends BaseActivity<BasePresenter, ActivityAdd
 
 
     private void addCard() {
-        boolean selected = mBinding.imgCheck.isSelected();
-        String bank = mBinding.etPhone.getText().toString().trim();
-        String bank_phone = mBinding.etBankPhone.getText().toString().trim();
-        String bank_date = mBinding.etBankDate.getText().toString().trim();
-        String bank_bei = mBinding.etBankBei.getText().toString().trim();
+        boolean selected   = mBinding.imgCheck.isSelected();
+        String  bank       = mBinding.etPhone.getText().toString().trim();
+        String  bank_phone = mBinding.etBankPhone.getText().toString().trim();
+        String  bank_date  = mBinding.etBankDate.getText().toString().trim();
+        String  bank_bei   = mBinding.etBankBei.getText().toString().trim();
         if (TextUtils.isEmpty(mCardType)) {
             showToast("银行卡信息不能为空!");
             return;
@@ -131,6 +141,7 @@ public class AddBankCardActivity extends BaseActivity<BasePresenter, ActivityAdd
             showToast("银行卡信息不能为空!");
             return;
         }
+
 
         if (mCardType.equals("CC")) {
             if (TextUtils.isEmpty(bank_date)) {
@@ -148,6 +159,68 @@ public class AddBankCardActivity extends BaseActivity<BasePresenter, ActivityAdd
             return;
         }
         Api.getApi().addCard(bank, bank_phone, mCardType, bank_bei, bank_date)
+                .compose(callbackOnIOToMainThread())
+                .subscribe(new BaseNetListener<BindModel>(this, true) {
+                    @Override
+                    public void onSuccess(BindModel bindModel) {
+                        showToast("发送成功!");
+                        unique_code = bindModel.getUnique_code();
+                        mBinding.tvCode.startCountDown(59);
+                    }
+
+                    @Override
+                    public void onFail(String errMsg) {
+
+                    }
+                });
+
+    }
+
+    private void addReCard() {
+        boolean selected   = mBinding.imgCheck.isSelected();
+        String  bank       = mBinding.etPhone.getText().toString().trim();
+        String  bank_phone = mBinding.etBankPhone.getText().toString().trim();
+        String  bank_date  = mBinding.etBankDate.getText().toString().trim();
+        String  bank_bei   = mBinding.etBankBei.getText().toString().trim();
+        String  code       = mBinding.etCode.getText().toString().trim();
+        if (TextUtils.isEmpty(unique_code)) {
+            showToast("请先发送验证码!");
+            return;
+        }
+        if (TextUtils.isEmpty(mCardType)) {
+            showToast("银行卡信息不能为空!");
+            return;
+        }
+        if (TextUtils.isEmpty(bank)) {
+            showToast("银行卡信息不能为空!");
+            return;
+        }
+        if (TextUtils.isEmpty(bank_phone)) {
+            showToast("银行卡信息不能为空!");
+            return;
+        }
+        if (TextUtils.isEmpty(bank_phone)) {
+            showToast("验证码不能为空!");
+            return;
+        }
+
+
+        if (mCardType.equals("CC")) {
+            if (TextUtils.isEmpty(bank_date)) {
+                showToast("信用卡信息不能为空!");
+                return;
+            }
+            if (TextUtils.isEmpty(bank_bei)) {
+                showToast("信用卡信息不能为空!");
+                return;
+            }
+
+        }
+        if (!selected) {
+            showToast("请接受协议!");
+            return;
+        }
+        Api.getApi().addReCard(bank, bank_phone, mCardType, bank_bei, bank_date, unique_code, code)
                 .compose(callbackOnIOToMainThread())
                 .subscribe(new BaseNetListener<String>(this, true) {
                     @Override
