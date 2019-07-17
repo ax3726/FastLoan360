@@ -76,9 +76,9 @@ public class PersonalActivity extends BaseActivity<BasePresenter, ActivityPerson
             @Override
             public void onClick(View v) {
                 if (mBinding.tvJiben.isSelected()) {
-
-                } else {//英航卡列表
                     startActivity(AddBankCardActivity.class);
+                } else {//英航卡列表
+                    startActivity(BankcardActivity.class);
                 }
             }
         });

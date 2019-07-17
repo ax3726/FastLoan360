@@ -52,7 +52,7 @@ public class BankcardActivity extends BaseActivity<BasePresenter, ActivityBankca
         mTitleBarLayout.setTitle("银行卡信息");
     }
 
-    private Myadapter myadapter;
+    private Myadapter                 myadapter;
     private List<Map<String, Object>> mydata;
 
     @Override
@@ -61,59 +61,55 @@ public class BankcardActivity extends BaseActivity<BasePresenter, ActivityBankca
 
 
         mydata = new ArrayList<Map<String, Object>>();
-//        Map<String, Object> hashMap = new HashMap<String, Object>();
-//        hashMap.put("tv1", "中国工商银行");
-//        hashMap.put("tv6", "5363");
-//        hashMap.put("tv3", "储蓄卡");
-//        mydata.add(hashMap);
-//        Map<String, Object> hashMap2 = new HashMap<String, Object>();
-//        hashMap2.put("tv1", "招商银行");
-//        hashMap2.put("tv6", "6688");
-//        hashMap2.put("tv3", "储蓄卡");
-//        mydata.add(hashMap2);
 
-        if(MyApplication.getInstance().getUserInfo().getCard()!=null){
-            for (int i = 0; i < MyApplication.getInstance().getUserInfo().getCard().size(); i++) {
-                String maskNumber =MyApplication.getInstance().getUserInfo().getCard().get(i).getNumber().substring(MyApplication.getInstance().getUserInfo().getCard().get(i).getNumber().length()-4,MyApplication.getInstance().getUserInfo().getCard().get(i).getNumber().length());
-                Map<String, Object> hashMap = new HashMap<String, Object>();
-                hashMap.put("tv1", MyApplication.getInstance().getUserInfo().getCard().get(i).getName());
-                hashMap.put("tv6", maskNumber);
-                hashMap.put("img",MyApplication.getInstance().getUserInfo().getCard().get(i).getLogo());
-                hashMap.put("tv3", MyApplication.getInstance().getUserInfo().getCard().get(i).getType());
-                mydata.add(hashMap);
-            }
-        }
+
+
         myadapter = new Myadapter(mydata);
         mBinding.banklist.setAdapter(myadapter);
         mBinding.add.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
 
-               startActivity(AddBankCardActivity.class);
-           }
-       });
+                startActivity(AddBankCardActivity.class);
+            }
+        });
 
     }
 
-//
-//    private void getUserInfo() {
-//        Api.getApi().getUserInfo()
-//                .compose(callbackOnIOToMainThread())
-//                .subscribe(new BaseNetListener<UserInfoModel>(this, true) {
-//                    @Override
-//                    public void onSuccess(UserInfoModel userInfoModel) {
-//                        MyApplication.getInstance().setUserInfo(userInfoModel);
-//                        mBinding.tvAccount.setText(userInfoModel.getBalance() + "");
-//                    }
-//
-//                    @Override
-//                    public void onFail(String errMsg) {
-//
-//                    }
-//                });
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getUserInfo();
+    }
 
+    private void getUserInfo() {
+        Api.getApi().getUserInfo()
+                .compose(callbackOnIOToMainThread())
+                .subscribe(new BaseNetListener<UserInfoModel>(this, true) {
+                    @Override
+                    public void onSuccess(UserInfoModel userInfoModel) {
+                        MyApplication.getInstance().setUserInfo(userInfoModel);
+                        mydata.clear();
+                        if (userInfoModel != null && userInfoModel.getCard() != null) {
+                            for (int i = 0; i < MyApplication.getInstance().getUserInfo().getCard().size(); i++) {
+                                String              maskNumber = MyApplication.getInstance().getUserInfo().getCard().get(i).getNumber().substring(MyApplication.getInstance().getUserInfo().getCard().get(i).getNumber().length() - 4, MyApplication.getInstance().getUserInfo().getCard().get(i).getNumber().length());
+                                Map<String, Object> hashMap    = new HashMap<String, Object>();
+                                hashMap.put("tv1", MyApplication.getInstance().getUserInfo().getCard().get(i).getName());
+                                hashMap.put("tv6", maskNumber);
+                                hashMap.put("img", MyApplication.getInstance().getUserInfo().getCard().get(i).getLogo());
+                                hashMap.put("tv3", MyApplication.getInstance().getUserInfo().getCard().get(i).getType());
+                                mydata.add(hashMap);
+                            }
+                        }
+                        myadapter.notifyDataSetChanged();
+                    }
 
+                    @Override
+                    public void onFail(String errMsg) {
+
+                    }
+                });
+    }
 
 
     public class Myadapter extends BaseAdapter {
@@ -158,7 +154,6 @@ public class BankcardActivity extends BaseActivity<BasePresenter, ActivityBankca
             }
 
 
-
             myholder.tv1.setText(data.get(position).get("tv1").toString());
 
             myholder.background_color.setBackgroundColor(Color.parseColor("#9070F9"));
@@ -174,12 +169,12 @@ public class BankcardActivity extends BaseActivity<BasePresenter, ActivityBankca
         class Myholder {
             ImageView img;
             ImageView background_color;
-            TextView tv1;
-            TextView tv2;
-            TextView tv3;
-            TextView tv4;
-            TextView tv5;
-            TextView tv6;
+            TextView  tv1;
+            TextView  tv2;
+            TextView  tv3;
+            TextView  tv4;
+            TextView  tv5;
+            TextView  tv6;
         }
 
     }

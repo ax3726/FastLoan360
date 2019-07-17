@@ -1,5 +1,7 @@
 package com.xjd.a360fastloan.ui.mine;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
@@ -35,7 +37,7 @@ public class MineFragment extends BaseFragment<BaseFragmentPresenter, FragmentMi
     protected void initData() {
         super.initData();
 
-        String maskNumber = MyApplication.getInstance().getUserInfo().getMobile().toString().substring(0,3)+"****"+MyApplication.getInstance().getUserInfo().getMobile().toString().substring(7,MyApplication.getInstance().getUserInfo().getMobile().toString().length());
+        String maskNumber = MyApplication.getInstance().getUserInfo().getMobile().toString().substring(0, 3) + "****" + MyApplication.getInstance().getUserInfo().getMobile().toString().substring(7, MyApplication.getInstance().getUserInfo().getMobile().toString().length());
         mBinding.tvLogin.setText(maskNumber);
         mBinding.tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,14 +91,25 @@ public class MineFragment extends BaseFragment<BaseFragmentPresenter, FragmentMi
                 startActivity(AboutActivity.class);
             }
         });
-//        mBinding.tvLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(LoginActivity.class);
-//            }
-//        });
+
+        mBinding.tvPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                call(mBinding.tvPhone.getText().toString().trim());
+            }
+        });
     }
 
+    /**
+     * 调用拨号界面
+     *
+     * @param phone 电话号码
+     */
+    private void call(String phone) {
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 
 //    @Override
 //    public void photoSuccess(String path, File file, int... queue) {
